@@ -18,3 +18,47 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+
+# Example Files
+/Examples/iPhone/
+/Examples/Linux/
+/Examples/Win32/
+/ControlEngine/
+
+
+
+##########################
+# C gitignore from https://github.com/github/gitignore
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+#######################
+# C++ gitignore https://github.com/github/gitignore
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
