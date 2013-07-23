@@ -1,3 +1,5 @@
+.gitignore~
+
 # built application files
 *.apk
 *.ap_
@@ -10,14 +12,16 @@
 
 # generated files
 bin/
-gen/
+#gen/
+Build/
+obj/
 
 # Local configuration file (sdk path, etc)
-local.properties
+#local.properties
 
 # Eclipse project files
-.classpath
-.project
+#.classpath
+#.project
 
 # Example Files
 /Examples/iPhone/
@@ -30,35 +34,35 @@ local.properties
 ##########################
 # C gitignore from https://github.com/github/gitignore
 # Object files
-*.o
+#*.o
 
 # Libraries
-*.lib
-*.a
+#*.lib
+#*.a
 
 # Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+#*.dll
+#*.so
+#*.so.*
+#*.dylib
 
 # Executables
-*.exe
-*.out
-*.app
+#*.exe
+#*.out
+#*.app
 
 #######################
 # C++ gitignore https://github.com/github/gitignore
 # Compiled Object files
-*.slo
-*.lo
-*.o
+#*.slo
+#*.lo
+#*.o
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
+#*.so
+#*.dylib
 
 # Compiled Static libraries
-*.lai
-*.la
-*.a
+#*.lai
+#*.la
+#*.a
