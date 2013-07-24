@@ -293,6 +293,7 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/layout/video_view.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/layout/hint_screen_switch.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/layout/hint_screen_hovering.xml \
+/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/layout/catroiddummy.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/layout/ff2_settings_page_device.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/layout/ff2_settings_page_ardrone.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/layout/hud_screen.xml \

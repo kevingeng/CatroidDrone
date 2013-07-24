@@ -4,40 +4,43 @@
 # view res/layout/guest_space_informations.xml #generated:6
 -keep class android.support.v4.view.ViewPager { <init>(...); }
 
-# view AndroidManifest.xml #generated:43
+# view AndroidManifest.xml #generated:22
 -keep class com.parrot.freeflight.FreeFlightApplication { <init>(...); }
 
-# view AndroidManifest.xml #generated:112
+# view AndroidManifest.xml #generated:65
 -keep class com.parrot.freeflight.activities.BrowserActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:68
+# view AndroidManifest.xml #generated:34
 -keep class com.parrot.freeflight.activities.ConnectActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:73
+# view AndroidManifest.xml #generated:39
 -keep class com.parrot.freeflight.activities.ControlDroneActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:89
+# view AndroidManifest.xml #generated:50
 -keep class com.parrot.freeflight.activities.DashboardActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:102
+# view AndroidManifest.xml #generated:59
 -keep class com.parrot.freeflight.activities.GalleryActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:107
+# view AndroidManifest.xml #generated:62
 -keep class com.parrot.freeflight.activities.GuestSpaceActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:84
+# view AndroidManifest.xml #generated:47
 -keep class com.parrot.freeflight.activities.MediaActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:50
+# view AndroidManifest.xml #generated:25
 -keep class com.parrot.freeflight.activities.SplashActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:96
+# view AndroidManifest.xml #generated:55
 -keep class com.parrot.freeflight.activities.UpdateFirmwareActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:82
+# view AndroidManifest.xml #generated:69
+-keep class com.parrot.freeflight.activities.base.CatroidDummy { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
 -keep class com.parrot.freeflight.service.DroneControlService { <init>(...); }
 
-# view AndroidManifest.xml #generated:119
+# view AndroidManifest.xml #generated:75
 -keep class com.parrot.freeflight.transcodeservice.TranscodingService { <init>(...); }
 
 # view res/layout/ff2_settings_page_ardrone.xml #generated:49
@@ -53,6 +56,6 @@
 # view res/layout/ff2_settings_screen.xml #generated:32
 -keep class com.parrot.freeflight.ui.controls.ViewPagerIndicator { <init>(...); }
 
-# view AndroidManifest.xml #generated:121
+# view AndroidManifest.xml #generated:76
 -keep class com.parrot.freeflight.updater.FirmwareUpdateService { <init>(...); }
 
