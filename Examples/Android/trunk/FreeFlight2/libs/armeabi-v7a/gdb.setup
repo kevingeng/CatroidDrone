@@ -1,0 +1,2 @@
+set solib-search-path ./obj/local/armeabi-v7a
+directory /home/gerald/dev/sdk/android-ndk-r8e/platforms/android-14/arch-arm/usr/include jni/FFMPEG jni/API/../ITTIAM/avc_decoder/includes jni/API/../ITTIAM/m4v_decoder/includes jni/API/../FFMPEG/Includes jni/GLFIX /home/gerald/dev/sdk/android-ndk-r8e/sources/cxx-stl/system
