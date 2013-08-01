@@ -17,5 +17,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Disconnect" />
-
+	
+	<Button
+        android:id="@+id/btn_takeoff"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Takeoff" />
+    
+	<Button
+        android:id="@+id/btn_land"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Land" />
 </LinearLayout>

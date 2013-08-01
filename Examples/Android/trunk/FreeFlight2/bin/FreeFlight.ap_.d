@@ -1762,12 +1762,4 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/res/drawable-large-xhdpi/ff2_battery_080.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/res/drawable-large-xhdpi/ff2_battery_060.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/res/drawable-large-xhdpi/ff2_battery_100.png \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/fonts \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/firmware \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/fonts/helveticaneue-condensedbold.otf \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/firmware/ardrone_update.plf \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/firmware/repair.bin \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/firmware/firmware.xml \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/firmware/sys_bootldr.bin \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/assets/firmware/ardrone2_update.plf \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/AndroidManifest.xml \
