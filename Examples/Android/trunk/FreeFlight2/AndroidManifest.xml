@@ -37,7 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <!--created by gerald at 2013-07-24 15:54:16-->
         <activity android:name=".activities.base.CatroidDummy"
             android:taskAffinity="com.parrot.freeflight.activities.base.CatroidDummy"
@@ -47,8 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-
         <activity android:excludeFromRecents="true"
             android:finishOnTaskLaunch="true"
             android:name=".activities.ConnectActivity"
