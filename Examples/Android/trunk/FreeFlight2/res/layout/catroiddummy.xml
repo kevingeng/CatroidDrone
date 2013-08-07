@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:id="@+id/catroid_dummy_activity_layout" >
 
     <Button
         android:id="@+id/btn_connect"
@@ -31,4 +32,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Land" />
+	
+	<Button
+        android:id="@+id/btn_create_surface_view"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Land" />
+
+	<Button
+        android:id="@+id/btn_start_view"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Land" />			
+	
 </LinearLayout>

@@ -3,6 +3,9 @@
  */
 package com.parrot.freeflight.activities.base;
 
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
 import com.parrot.freeflight.R;
 import com.parrot.freeflight.R.id;
 import com.parrot.freeflight.activities.SettingsDialog;
@@ -14,12 +17,17 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.drawable.Drawable;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -34,6 +42,8 @@ public class CatroidDummy extends Activity {
 	Button btnDisconnect;
 	Button btnTakeoff;
 	Button btnLand;
+	Button btnCreateView;
+	Button btnStartVideo;
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -74,6 +84,15 @@ public class CatroidDummy extends Activity {
 			}
 		});
 		
+		btnCreateView = (Button) findViewById(id.btn_start_view);
+		btnCreateView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				createSurfaceView();				
+			}
+		});
+		
 	}
 
 	/* (non-Javadoc)
@@ -83,6 +102,7 @@ public class CatroidDummy extends Activity {
 	public void onStart() {
 		super.onStart();
 		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -189,7 +209,49 @@ public class CatroidDummy extends Activity {
         //}
     }    
 
-	
-	
 
+    private void createSurfaceView(){
+    	
+    	//TODO: Implement 
+    	LinearLayout l = (LinearLayout) findViewById(id.catroid_dummy_activity_layout);  
+    	GLSurfaceView s = new GLSurfaceView(this);
+		//Drawable sky = (getResources().getDrawable(R.drawable.sky));
+        //this.setBackgroundDrawable(sky);    	
+    	Drawable catroidLogo = (getResources().getDrawable(R.drawable.ic_launcher));
+        s.setBackgroundColor(1);
+    	s.setBackground(catroidLogo);
+    	
+    
+    	
+    	
+    	ClearRenderer myGLRenderer = new ClearRenderer();
+    	s.setRenderer(myGLRenderer);
+    	
+    	
+    	    	
+    	//s.setRenderer(myGLRenderer);
+
+    	//to add the view with your own parameters
+    	l.addView(s, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+    	//or simply use
+    	//l.addView(s,0);
+    }
+	
+    class ClearRenderer implements GLSurfaceView.Renderer {
+	    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+	        // Do nothing special.]
+	    	
+	    }
+
+	    public void onSurfaceChanged(GL10 gl, int w, int h) {
+	        gl.glViewport(0, 0, w, h);
+	    }
+
+	    public void onDrawFrame(GL10 gl) {
+	        gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+	        
+	    }
+    }
+    
 }

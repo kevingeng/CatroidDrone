@@ -129,8 +129,7 @@ public class GLBGVideoSprite extends GLSprite
 		}
 		
 		return success;
-	}
-	
+	}	
 	
 	private native boolean onUpdateVideoTextureNative(int program, int textureId);
 	private native void onSurfaceCreatedNative();

@@ -11,7 +11,7 @@ public class VideoStageView extends SurfaceView
 implements 
 	SurfaceHolder.Callback
 {
-	public static boolean SHOW_FPS = false;
+	public static boolean SHOW_FPS = true;
     //Measure frames per second.
     long now;
     int framesCount=0;

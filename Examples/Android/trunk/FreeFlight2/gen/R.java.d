@@ -19,6 +19,7 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable/btn_delete.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable/browser_arrow_right.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable/rbtn_photo_video.xml \
+/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable/ic_launcher.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable/wheretobuy.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable/ff2_arrow_right.xml \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable/btn_home.xml \
@@ -1056,6 +1057,7 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable-large-xhdpi/ff2_battery_080.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable-large-xhdpi/ff2_battery_060.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/res/drawable-large-xhdpi/ff2_battery_100.png \
+/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/res/drawable/ic_launcher.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/res/drawable-nodpi/tips_09_hovering.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/res/drawable-nodpi/tips_06_take_off.png \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/res/drawable-nodpi/tips_12_flip.png \

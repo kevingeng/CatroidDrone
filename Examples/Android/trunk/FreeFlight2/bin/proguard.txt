@@ -7,40 +7,40 @@
 # view AndroidManifest.xml #generated:22
 -keep class com.parrot.freeflight.FreeFlightApplication { <init>(...); }
 
-# view AndroidManifest.xml #generated:65
+# view AndroidManifest.xml #generated:83
 -keep class com.parrot.freeflight.activities.BrowserActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:34
+# view AndroidManifest.xml #generated:52
 -keep class com.parrot.freeflight.activities.ConnectActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:39
+# view AndroidManifest.xml #generated:57
 -keep class com.parrot.freeflight.activities.ControlDroneActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:50
+# view AndroidManifest.xml #generated:68
 -keep class com.parrot.freeflight.activities.DashboardActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:59
+# view AndroidManifest.xml #generated:77
 -keep class com.parrot.freeflight.activities.GalleryActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:62
+# view AndroidManifest.xml #generated:80
 -keep class com.parrot.freeflight.activities.GuestSpaceActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:47
+# view AndroidManifest.xml #generated:65
 -keep class com.parrot.freeflight.activities.MediaActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:25
 -keep class com.parrot.freeflight.activities.SplashActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:55
+# view AndroidManifest.xml #generated:73
 -keep class com.parrot.freeflight.activities.UpdateFirmwareActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:69
+# view AndroidManifest.xml #generated:42
 -keep class com.parrot.freeflight.activities.base.CatroidDummy { <init>(...); }
 
-# view AndroidManifest.xml #generated:46
+# view AndroidManifest.xml #generated:64
 -keep class com.parrot.freeflight.service.DroneControlService { <init>(...); }
 
-# view AndroidManifest.xml #generated:75
+# view AndroidManifest.xml #generated:86
 -keep class com.parrot.freeflight.transcodeservice.TranscodingService { <init>(...); }
 
 # view res/layout/ff2_settings_page_ardrone.xml #generated:49
@@ -56,6 +56,6 @@
 # view res/layout/ff2_settings_screen.xml #generated:32
 -keep class com.parrot.freeflight.ui.controls.ViewPagerIndicator { <init>(...); }
 
-# view AndroidManifest.xml #generated:76
+# view AndroidManifest.xml #generated:87
 -keep class com.parrot.freeflight.updater.FirmwareUpdateService { <init>(...); }
 

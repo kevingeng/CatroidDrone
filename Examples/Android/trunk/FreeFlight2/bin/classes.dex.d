@@ -3,7 +3,6 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/ftp/FTPClient.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/ftp/FTPClientStatus.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/ftp/FTPOperation.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/ftp/FTPClientStatus$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/ftp/FTPClientStatus$FTPStatus.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/ftp/FTPProgressListener.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/service/DroneControlService$1.class \
@@ -27,12 +26,10 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/service/commands/DisconnectCommand.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/ActionBar$2.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/SettingsDialogDelegate.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/SettingsViewController$9.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/StatusBar$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/StatusBar$2.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/ImageStickView.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/HudViewController$JoystickType.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/ActionBar$3.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/ConnectScreenViewController$IndicatorState.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/SettingsViewController$5.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/ActionBar$1.class \
@@ -44,7 +41,6 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/Sprite.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/Button.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/Sprite$Align.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/Sprite$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/Image$SizeParams.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/AcceleroJoystick.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/Text.class \
@@ -54,7 +50,6 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/AnalogueJoystick.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/ToggleButton.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/JoystickBase.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/hud/JoystickBase$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/HudViewController.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/SettingsViewController$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/ui/listeners/OnSeekChangedListener.class \
@@ -157,7 +152,6 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/updater/FirmwareUpdateService.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/updater/UpdateManager.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/updater/UpdateManager$1.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/updater/FirmwareUpdateService$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/updater/utils/FirmwareConfig.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/updater/UpdateManager$3.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/updater/UpdaterDelegate.class \
@@ -219,7 +213,6 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/GuestSpaceActivity$ParrotWebViewClient.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$7.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$8.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/UpdateFirmwareActivity$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/SplashActivity$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$5.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$4.class \
@@ -229,7 +222,6 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/MediaActivity$2.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/SettingsDialog$2.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/UpdateFirmwareActivity.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/BrowserActivity$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/GuestSpaceActivity$ParrotWebChromeClient.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$24.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ConnectActivity$1.class \
@@ -238,12 +230,13 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/DashboardActivityBase$2.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/DashboardActivityBase$EPhotoVideoState.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$2.class \
+/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$ClearRenderer.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$5.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$3.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/DashboardActivityBase.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/DashboardActivityBase$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/ParrotActivity.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/DashboardActivityBase$3.class \
+/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$6.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$4.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity.class \
@@ -252,13 +245,10 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$15.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$14.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/GuestSpaceActivity.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$25.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$19.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/MediaActivity$4.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$3.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$20.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$22.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/GuestSpaceActivity$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/SettingsDialog.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/MediaActivity$3.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/activities/MediaActivity$1.class \
@@ -295,7 +285,6 @@
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/debug/ViewServer$NoopViewServer.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/debug/ViewServer$ViewServerWorker.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/debug/ViewServer$WindowListener.class \
-/home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/debug/ViewServer$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/debug/ViewServer.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/transcodeservice/TranscodingService$1.class \
 /home/gerald/ARDrone_SDK_2_0_1_new/Examples/Android/trunk/FreeFlight2/bin/classes/com/parrot/freeflight/transcodeservice/TranscodingService$LocalBinder.class \
