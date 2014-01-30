@@ -13,5 +13,5 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
 6. Install the app with ``adb install -r bin/FreeFlight-release.apk``
 
 ##Development
-1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/edit/master/README.md#build-apk)
+1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/blob/master/README.md#build-apk)
 2. 
