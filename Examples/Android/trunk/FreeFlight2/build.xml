@@ -42,8 +42,17 @@
 
 	<!-- quick check on sdk.dir -->
 	<fail message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through an env var" unless="sdk.dir" />
+        
+        <target name="debug">   
+           <echo message="execute sh build.sh release" /> 
+           <exec executable="sh">
+                <arg value="-c" />
+	        <arg value="sh build.sh release" />
+           </exec>
+        </target>
 
 	<target name="build_ffmpeg">
+                <echo message="Targets: ${ant.project.invoked-targets}"/>
 		<echo message="Building FFMPEG" />
 		<if condition="${build.is.packaging.debug}">
 			<then>
