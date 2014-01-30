@@ -1,7 +1,8 @@
 # Change according to your environment
 ANDROID_SDK_PATH=~/Downloads/android-sdk-linux
-ANDROID_NDK_PATH=/home/gerald/dev/sdk/android-ndk-r8e
-ARDRONE_LIB_PATH=../../../../ARDroneLib
+#ANDROID_NDK_PATH=/home/gerald/dev/sdk/android-ndk-r8e
+ANDROID_NDK_PATH=/home/gerald/dev_ardrone/android-ndk-r9c
+ARDRONE_LIB_PATH=../../../../ARDroneLib		
 
 # Don not edit
 JDK_PATH=$(bash -c 'JAVAC_PATH=$(which javac); while [ -L $JAVAC_PATH ]; do JAVAC_PATH=$(readlink $JAVAC_PATH); done; JPATH=$(echo $JAVAC_PATH | sed s:bin/javac::); echo $JPATH')
