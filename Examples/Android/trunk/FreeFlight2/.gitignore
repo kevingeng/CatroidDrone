@@ -1,1 +1,11 @@
 environment.properties
+bin/FreeFlight-release-unsigned.apk.d
+bin/FreeFlight.ap_.d
+bin/build.prop
+bin/classes.dex.d
+bin/dexedLibs/android-support-v13-207253f52acc8788a3e4e4b5952b7488.jar
+bin/dexedLibs/com.sony.rdis.receiver-20111206-ab941c052f8ecfd8c53454bfc080a3be.jar
+bin/dexedLibs/com.sony.rdis.receiver.utility-20111206-38da0de3ddcf97b16c53651a850b94ad.jar
+gen/R.java.d
+bin/AndroidManifest.xml.d
+

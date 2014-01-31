@@ -208,7 +208,11 @@
 	</target>
 
 	<target name="-post-build">
-	    
+	    <echo message="install apk on device" /> 
+           <exec executable="sh">
+                <arg value="-c" />
+	        <arg value="adb install -r bin/FreeFlight-release.apk" />
+           </exec>
 	</target>
 	<!--
     /* This is typically used for code obfuscation.
