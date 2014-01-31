@@ -1,0 +1,22 @@
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/bin/FreeFlight-release-unsigned.apk : \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/bin/FreeFlight.ap_ \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/bin/classes.dex \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/com.sony.rdis.receiver.utility-20111206.jar \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/com.sony.rdis.receiver-20111206.jar \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/android-support-v13.jar \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libavdevice.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libavfilter.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libadfreeflight.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libavformat.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libavcodec.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libavutil.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libswscale.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi-v7a/libglfix.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libavdevice.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libavfilter.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libadfreeflight.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libavformat.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libavcodec.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libavutil.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libswscale.so \
+/home/gerald/dev_ardrone/CatroidDrone/CatroidDrone/libs/armeabi/libglfix.so \
