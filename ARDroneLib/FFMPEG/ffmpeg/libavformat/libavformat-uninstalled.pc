@@ -1,7 +1,7 @@
 prefix=
 exec_prefix=
 libdir=${pcfiledir}
-includedir=/home/gerald/dev_ardrone/CatroidDrone/ARDroneLib/FFMPEG/ffmpeg
+includedir=/home/maverick/android_git/CatroidDrone/ARDroneLib/FFMPEG/ffmpeg
 
 Name: libavformat
 Description: FFmpeg container format library
