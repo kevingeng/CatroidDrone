@@ -49,7 +49,7 @@
                 <arg value="-c" />
 	        <arg value="sh build.sh release" />
            </exec>
-       </target>    
+       </target>
 
       <target name="help">   
            <echo message="execute sh build.sh release" /> 
