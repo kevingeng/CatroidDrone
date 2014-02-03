@@ -168,6 +168,19 @@ public class CatroidDummy extends Activity {
 
 	}
 	
+	private void moveUp(long duration, float speed){
+		droneControlService.moveUp(0.1f);
+		
+		try {
+			Thread.sleep( duration);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+	}
+	
     private ServiceConnection mConnection = new ServiceConnection()
     {
 
@@ -219,7 +232,7 @@ public class CatroidDummy extends Activity {
         //this.setBackgroundDrawable(sky);    	
     	Drawable catroidLogo = (getResources().getDrawable(R.drawable.ic_launcher));
         s.setBackgroundColor(1);
-    	s.setBackground(catroidLogo);
+    	//s.setBackground(catroidLogo);
     	
     
     	
