@@ -23,90 +23,222 @@ import android.opengl.GLSurfaceView.Renderer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 /**
  * @author GeraldW
- *
+ * 
  */
 public class CatroidDummy extends Activity {
 
-    private DroneControlService droneControlService;
-	
-	Button btnConnect;
-	Button btnDisconnect;
-	Button btnTakeoff;
-	Button btnLand;
-	Button btnCreateView;
-	Button btnStartVideo;
-	/* (non-Javadoc)
+	private DroneControlService droneControlService;
+
+	private View topView;
+	private Button btnConnect;
+	private Button btnDisconnect;
+	private Button btnTakeoff;
+	private Button btnLand;
+	private Button btnUp;
+	private Button btnDown;
+	private Button btnLeft;
+	private Button btnRigth;
+	private Button btnHover;
+	private SeekBar powerBar;
+
+	private boolean isDroneConnected;
+	private float power = 0.2f;
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// TODO Auto-generated method stub
-
 		setContentView(R.layout.catroiddummy);
-		btnConnect = (Button)findViewById(R.id.btn_connect);
-		btnConnect.setOnClickListener(new OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				onConnectPressed();				
+
+		topView = findViewById(R.id.textViewTop);
+
+		powerBar = (SeekBar) findViewById(R.id.seekBarPower);
+		powerBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+
+			int progressChanged = 0;
+
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				progressChanged = progress;
+			}
+
+			public void onStartTrackingTouch(SeekBar seekBar) {
+			}
+
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				power = getConvertedValue(progressChanged);
+				Toast.makeText(seekBar.getContext(), "Value: " + power,
+						Toast.LENGTH_SHORT).show();
 			}
 		});
-		
-		btnDisconnect = (Button)findViewById(R.id.btn_disconnect);
+
+		btnConnect = (Button) findViewById(R.id.btn_connect);
+		btnConnect.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (onConnectPressed()) {
+					topView.setBackgroundColor(0xFF00FF00);
+					topView.invalidate();
+					isDroneConnected = true;
+				} else {
+					topView.setBackgroundColor(0xFFFF0000);
+					topView.invalidate();
+					isDroneConnected = false;
+				}
+			}
+		});
+
+		btnDisconnect = (Button) findViewById(R.id.btn_disconnect);
 		btnDisconnect.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				onDisconnectPressed();
+				if (isDroneConnected) {
+					onDisconnectPressed();
+					topView.setBackgroundColor(0xFFFF0000);
+					topView.invalidate();
+					isDroneConnected = false;
+				}
 			}
 		});
-		btnTakeoff = (Button)findViewById(R.id.btn_takeoff);
-		btnTakeoff.setOnClickListener(new OnClickListener() {			
+
+		btnTakeoff = (Button) findViewById(R.id.btn_takeoff);
+		btnTakeoff.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				onTakeoffPressed();
 			}
 		});
-		
-		btnLand = (Button)findViewById(id.btn_land);
-		btnLand.setOnClickListener(new OnClickListener() {			
+
+		btnLand = (Button) findViewById(id.btn_land);
+		btnLand.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {				
+			public void onClick(View v) {
 				onLandPresed();
 			}
 		});
-		
-		btnCreateView = (Button) findViewById(id.btn_start_view);
-		btnCreateView.setOnClickListener(new OnClickListener() {
-			
+
+		btnHover = (Button) findViewById(id.btn_Hover);
+		btnHover.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				createSurfaceView();				
+				power = 0;
+				powerBar.setProgress(0);
+			}
+		});
+
+		btnUp = (Button) findViewById(id.btn_Up);
+		btnUp.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					moveUp(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					moveUp(0);
+					return true;
+				}
+				return false;
+			}
+		});
+
+		btnDown = (Button) findViewById(id.btn_Down);
+		btnDown.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					moveDown(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					moveDown(0);
+					return true;
+				}
+				return false;
 			}
 		});
 		
+		btnLeft = (Button) findViewById(id.btn_Left);
+		btnLeft.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					moveLeft(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					moveLeft(0);
+					return true;
+				}
+				return false;
+			}
+		});
+
+		btnRigth = (Button) findViewById(id.btn_Right);
+		btnRigth.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					moveRight(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					moveRight(0);
+					return true;
+				}
+				return false;
+			}
+		});
+
 	}
 
-	/* (non-Javadoc)
+	public float getConvertedValue(int intVal) {
+		float floatVal = 0.0f;
+		floatVal = .01f * intVal;
+		return floatVal;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onStart()
 	 */
 	@Override
 	public void onStart() {
 		super.onStart();
 		// TODO Auto-generated method stub
-		
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onResume()
 	 */
 	@Override
@@ -116,7 +248,9 @@ public class CatroidDummy extends Activity {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onPause()
 	 */
 	@Override
@@ -126,7 +260,9 @@ public class CatroidDummy extends Activity {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onStop()
 	 */
 	@Override
@@ -136,7 +272,9 @@ public class CatroidDummy extends Activity {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onDestroy()
 	 */
 	@Override
@@ -145,113 +283,123 @@ public class CatroidDummy extends Activity {
 		// TODO Auto-generated method stub
 
 	}
-	
-	private void onConnectPressed(){
+
+	private boolean onConnectPressed() {
 		Log.d("Drone", "onConnectPressed");
-		bindService(new Intent(this, DroneControlService.class), mConnection, Context.BIND_AUTO_CREATE);
-	}
-	
-	private void onDisconnectPressed(){
-		Log.d("Drone", "onDisconnectPressed");
+		return bindService(new Intent(this, DroneControlService.class),
+				mConnection, Context.BIND_AUTO_CREATE);
 
 	}
-	
-	private void onTakeoffPressed(){
+
+	private void onDisconnectPressed() {
+		Log.d("Drone", "onDisconnectPressed");
+		try {
+			getApplicationContext().unbindService(mConnection);
+		} catch (IllegalArgumentException e) {
+			// Exception will be ignored
+		}
+		Toast.makeText(getApplicationContext(), "Disconnected to Drone",
+				Toast.LENGTH_SHORT).show();
+	}
+
+	private void onTakeoffPressed() {
 		Log.d("Drone", "onTakeoffPressed");
 		droneControlService.triggerTakeOff();
 
 	}
-	
-	private void onLandPresed(){
+
+	private void onLandPresed() {
 		Log.d("Drone", "onLandPresed");
 		droneControlService.triggerTakeOff();
 
 	}
-	
-    private ServiceConnection mConnection = new ServiceConnection()
-    {
 
-        public void onServiceConnected(ComponentName name, IBinder service)
-        {
-            droneControlService = ((DroneControlService.LocalBinder) service).getService();
-            onDroneServiceConnected();
-        }
+	// NEW ----------------------------------
+	public void calibrateMagneto() {
+		Log.d("Drone", "calibrateMagneto");
+		droneControlService.calibrateMagneto();
+	}
 
-        public void onServiceDisconnected(ComponentName name)
-        {
-            droneControlService = null;
-        }
-    };
-    
-    /**
-     * Called when we connected to DroneControlService
-     */
-    protected void onDroneServiceConnected()
-    {
-    	if (droneControlService != null) {
-            droneControlService.resume();
-            droneControlService.requestDroneStatus();
-        } else {
-            Log.w("Drone", "DroneServiceConnected event ignored as DroneControlService is null");
-        }
+	public void doLeftFlip() {
+		Log.d("Drone", "doLeftFlip");
+		droneControlService.doLeftFlip();
+	}
 
-    	Toast.makeText(getApplicationContext(), "connected to Drone", Toast.LENGTH_SHORT).show();
-        //settingsDialog = new SettingsDialog(this, this, droneControlService, magnetoAvailable);
+	public void moveLeft(final float power) {
+		Log.d("Drone", "turnLeft");
+		droneControlService.turnLeft(power);
+	}
 
-        //applySettings(settings);
+	public void moveRight(final float power) {
+		Log.d("Drone", "turnRight");
+		droneControlService.turnRight(power);
+	}
 
-        //initListeners();
-        //runTranscoding();
-        
-        //if (droneControlService.getMediaDir() != null) {
-        //    view.setRecordButtonEnabled(true);
-        //    view.setCameraButtonEnabled(true);
-        //}
-    }    
+	public void moveUp(final float power) {
+		Log.d("Drone", "moveUp");
+		droneControlService.moveUp(power);
+	}
 
+	public void moveDown(final float power) {
+		Log.d("Drone", "moveDown");
+		droneControlService.moveDown(power);
+	}
 
-    private void createSurfaceView(){
-    	
-    	//TODO: Implement 
-    	LinearLayout l = (LinearLayout) findViewById(id.catroid_dummy_activity_layout);  
-    	GLSurfaceView s = new GLSurfaceView(this);
-		//Drawable sky = (getResources().getDrawable(R.drawable.sky));
-        //this.setBackgroundDrawable(sky);    	
-    	Drawable catroidLogo = (getResources().getDrawable(R.drawable.ic_launcher));
-        s.setBackgroundColor(1);
-    	s.setBackground(catroidLogo);
-    	
-    
-    	
-    	
-    	ClearRenderer myGLRenderer = new ClearRenderer();
-    	s.setRenderer(myGLRenderer);
-    	
-    	
-    	    	
-    	//s.setRenderer(myGLRenderer);
+	private ServiceConnection mConnection = new ServiceConnection() {
 
-    	//to add the view with your own parameters
-    	l.addView(s, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			droneControlService = ((DroneControlService.LocalBinder) service)
+					.getService();
+			onDroneServiceConnected();
+		}
 
-    	//or simply use
-    	//l.addView(s,0);
-    }
-	
-    class ClearRenderer implements GLSurfaceView.Renderer {
-	    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-	        // Do nothing special.]
-	    	
-	    }
+		public void onServiceDisconnected(ComponentName name) {
+			droneControlService = null;
+		}
+	};
 
-	    public void onSurfaceChanged(GL10 gl, int w, int h) {
-	        gl.glViewport(0, 0, w, h);
-	    }
+	/**
+	 * Called when we connected to DroneControlService
+	 */
+	protected void onDroneServiceConnected() {
+		if (droneControlService != null) {
+			droneControlService.resume();
+			droneControlService.requestDroneStatus();
+		} else {
+			Log.w("Drone",
+					"DroneServiceConnected event ignored as DroneControlService is null");
+		}
 
-	    public void onDrawFrame(GL10 gl) {
-	        gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-	        
-	    }
-    }
-    
+		Toast.makeText(getApplicationContext(), "connected to Drone",
+				Toast.LENGTH_SHORT).show();
+		// settingsDialog = new SettingsDialog(this, this, droneControlService,
+		// magnetoAvailable);
+
+		// applySettings(settings);
+
+		// initListeners();
+		// runTranscoding();
+
+		// if (droneControlService.getMediaDir() != null) {
+		// view.setRecordButtonEnabled(true);
+		// view.setCameraButtonEnabled(true);
+		// }
+	}
+
+	class ClearRenderer implements GLSurfaceView.Renderer {
+		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+			// Do nothing special.]
+
+		}
+
+		public void onSurfaceChanged(GL10 gl, int w, int h) {
+			gl.glViewport(0, 0, w, h);
+		}
+
+		public void onDrawFrame(GL10 gl) {
+			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+
+		}
+	}
+
 }
