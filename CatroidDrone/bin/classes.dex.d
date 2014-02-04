@@ -68,7 +68,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/WarningDialog.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$18.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/UpdateFirmwareActivity.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$25.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/GalleryActivity.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ConnectActivity.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/GuestSpaceActivity.class \
@@ -84,7 +83,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$24.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/DashboardActivity$2.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$3.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/base/DashboardActivityBase$3.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/base/DashboardActivityBase$EPhotoVideoState.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/base/CatroidDummy$6.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/base/ParrotActivity.class \
@@ -100,7 +98,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/BrowserActivity.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$10.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/GalleryActivity$1.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/GuestSpaceActivity$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$19.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/DashboardActivity.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$23.class \
@@ -108,9 +105,7 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$5.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ConnectActivity$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/DashboardActivity$1.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/UpdateFirmwareActivity$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/MediaActivity$ActionBarState.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/BrowserActivity$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/GalleryActivity$3.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$9.class \
@@ -120,7 +115,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$3.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/BrowserActivity$BrowserClient.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/MediaActivity$4.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/DashboardActivity$5.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/ControlDroneActivity$7.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/activities/WarningDialog$1.class \
@@ -147,7 +141,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/R$color.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/debug/ViewServer$ViewServerWorker.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/debug/ViewServer.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/debug/ViewServer$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/debug/ViewServer$UncloseableOuputStream.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/debug/ViewServer$NoopViewServer.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/debug/ViewServer$WindowListener.class \
@@ -234,7 +227,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/SettingsViewController$8.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/controls/ParrotSeekBar.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/controls/ViewPagerIndicator.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/ActionBar$3.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/HudViewController$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/HudViewController$JoystickType.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/SettingsViewController$5.class \
@@ -267,14 +259,12 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/SettingsDialogDelegate.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/interfaces/OnSettingChangedListener.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/ActionBar$2.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/SettingsViewController$9.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/ConnectScreenViewController.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/ImageStickView.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/gl/GLSprite.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/gl/GLBGVideoSprite.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/Image$SizeParams.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/ToggleButton.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/Sprite$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/JoystickListener.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/JoystickFactory.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/JoystickBase.class \
@@ -286,7 +276,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/AnalogueJoystick.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/Sprite$Align.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/Image.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/hud/JoystickBase$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/SettingsViewController$4.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/SettingsViewController$3.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/ui/SettingsViewController$1.class \
@@ -304,7 +293,6 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/updater/receivers/FirmwareUpdateServiceReceiver.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/updater/receivers/FirmwareUpdateServiceReceiverDelegate.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/updater/UpdateManager$2.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/updater/FirmwareUpdateService$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/updater/config/Config.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/updater/UpdateManager.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/freeflight/updater/FirmwareUpdateService$ECommand.class \
@@ -322,8 +310,8 @@
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/ftp/FTPClientStatus.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/ftp/FTPClient.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/ftp/FTPProgressListener.class \
-/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/com/parrot/ftp/FTPClientStatus$1.class \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/fix/android/opengl/GLES20.class \
+/home/maverick/android_git/CatroidDrone/CatroidDrone/bin/classes/R.java.d \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/dexedLibs/com.sony.rdis.receiver.utility-20111206-ca1de987b317b56a57609774f300790b.jar \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/dexedLibs/com.sony.rdis.receiver-20111206-c71864fa021a2438b5d767a4386f124a.jar \
 /home/maverick/android_git/CatroidDrone/CatroidDrone/bin/dexedLibs/android-support-v13-c309e5acf14b21867cc801ffd6ad816e.jar \

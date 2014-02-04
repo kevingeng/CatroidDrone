@@ -1,50 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/catroid_dummy_activity_layout" >
+    android:background="#ffffff"
+    android:shrinkColumns="*"
+    android:stretchColumns="*" >
 
-    <Button
-        android:id="@+id/btn_connect"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connect" />
+    <!-- Row 1 with single column -->
 
-    <Button
-        android:id="@+id/btn_disconnect"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+    <TableRow
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Disconnect" />
-	
-	<Button
-        android:id="@+id/btn_takeoff"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/textViewTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_span="3"
+            android:background="#FF0000"
+            android:gravity="center"
+            android:hint="Simple App for Drone Control"
+            android:padding="18dip"
+            android:text="DRON CONTROL"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Takeoff" />
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/btn_connect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Connect" />
+
+        <Button
+            android:id="@+id/btn_disconnect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disconnect" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/btn_takeoff"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Takeoff" />
+
+        <Button
+            android:id="@+id/btn_land"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Land" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/btn_Left"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Left" />
+
+        <Button
+            android:id="@+id/btn_Right"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Right" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/btn_Up"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Up" />
+
+        <Button
+            android:id="@+id/btn_Down"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Down" />
+    </TableRow>
     
-	<Button
-        android:id="@+id/btn_land"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+    <TableRow
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Land" />
-	
-	<Button
-        android:id="@+id/btn_create_surface_view"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Land" />
+        android:gravity="center_horizontal" >
 
-	<Button
-        android:id="@+id/btn_start_view"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_Hover"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hover" />
+
+    </TableRow>
+
+    <SeekBar
+        android:id="@+id/seekBarPower"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Land" />			
-	
-</LinearLayout>
+        android:layout_margin="10dp"
+        android:max="50"
+        android:progress="15" />
+
+</TableLayout>
