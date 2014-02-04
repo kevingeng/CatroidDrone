@@ -108,7 +108,7 @@
             android:layout_weight="1"
             android:text="Down" />
     </TableRow>
-    
+
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -120,15 +120,37 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Hover" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Move Speed [%]"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </TableRow>
 
-    <SeekBar
-        android:id="@+id/seekBarPower"
-        android:layout_width="match_parent"
+    <TableRow
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:max="50"
-        android:progress="15" />
+        android:gravity="center_horizontal" >
+
+        <SeekBar
+            android:id="@+id/seekBarPower"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:contentDescription="Move Speed"
+            android:progress="15" />
+
+    </TableRow>
 
 </TableLayout>

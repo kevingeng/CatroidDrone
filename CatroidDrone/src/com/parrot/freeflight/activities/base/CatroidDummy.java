@@ -10,6 +10,7 @@ import com.parrot.freeflight.R;
 import com.parrot.freeflight.R.id;
 import com.parrot.freeflight.activities.SettingsDialog;
 import com.parrot.freeflight.service.DroneControlService;
+import com.parrot.freeflight.service.commands.DroneServiceCommand;
 
 import android.R.layout;
 import android.app.Activity;
@@ -65,7 +66,6 @@ public class CatroidDummy extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// TODO Auto-generated method stub
 		setContentView(R.layout.catroiddummy);
 
 		topView = findViewById(R.id.textViewTop);
@@ -224,11 +224,6 @@ public class CatroidDummy extends Activity {
 		return floatVal;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onStart()
-	 */
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -236,11 +231,6 @@ public class CatroidDummy extends Activity {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onResume()
-	 */
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -248,11 +238,6 @@ public class CatroidDummy extends Activity {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onPause()
-	 */
 	@Override
 	public void onPause() {
 		super.onPause();
@@ -260,11 +245,7 @@ public class CatroidDummy extends Activity {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onStop()
-	 */
+
 	@Override
 	public void onStop() {
 		super.onStop();
@@ -272,11 +253,6 @@ public class CatroidDummy extends Activity {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onDestroy()
-	 */
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -318,6 +294,11 @@ public class CatroidDummy extends Activity {
 	public void calibrateMagneto() {
 		Log.d("Drone", "calibrateMagneto");
 		droneControlService.calibrateMagneto();
+	}
+	
+	public void trim(){
+		Log.d("Drone", "calibrateMagneto");
+		droneControlService.flatTrim();
 	}
 
 	public void doLeftFlip() {
@@ -372,6 +353,10 @@ public class CatroidDummy extends Activity {
 
 		Toast.makeText(getApplicationContext(), "connected to Drone",
 				Toast.LENGTH_SHORT).show();
+		
+		//to calibrate the drone
+		droneControlService.flatTrim();
+		
 		// settingsDialog = new SettingsDialog(this, this, droneControlService,
 		// magnetoAvailable);
 
