@@ -101,28 +101,12 @@ public class CatroidDummy extends Activity implements
 					topView.setBackgroundColor(0xFF00FF00);
 					topView.invalidate();
 					isDroneConnected = true;
-
-					btnDisconnect.setEnabled(true);
-					btnDown.setEnabled(true);
-					btnUp.setEnabled(true);
-					btnHover.setEnabled(true);
-					btnLeft.setEnabled(true);
-					btnRigth.setEnabled(true);
-					btnTakeoff.setEnabled(true);
-					btnLand.setEnabled(true);
+					enableButtons(true);
 				} else {
 					topView.setBackgroundColor(0xFFFF0000);
 					topView.invalidate();
 					isDroneConnected = false;
-
-					btnDisconnect.setEnabled(false);
-					btnDown.setEnabled(false);
-					btnUp.setEnabled(false);
-					btnHover.setEnabled(false);
-					btnLeft.setEnabled(false);
-					btnRigth.setEnabled(false);
-					btnTakeoff.setEnabled(false);
-					btnLand.setEnabled(false);
+					enableButtons(false);
 				}
 			}
 		});
@@ -246,14 +230,7 @@ public class CatroidDummy extends Activity implements
 		// DroneFlyingStateReceiverDelegate(this);
 
 		// disable buttons until we there is no connection
-		btnDisconnect.setEnabled(false);
-		btnDown.setEnabled(false);
-		btnUp.setEnabled(false);
-		btnHover.setEnabled(false);
-		btnLeft.setEnabled(false);
-		btnRigth.setEnabled(false);
-		btnTakeoff.setEnabled(false);
-		btnLand.setEnabled(false);
+		enableButtons(false);
 
 	}
 
@@ -261,6 +238,17 @@ public class CatroidDummy extends Activity implements
 		float floatVal = 0.0f;
 		floatVal = .01f * intVal;
 		return floatVal;
+	}
+
+	public void enableButtons(boolean value) {
+		btnDisconnect.setEnabled(value);
+		btnDown.setEnabled(value);
+		btnUp.setEnabled(value);
+		btnHover.setEnabled(value);
+		btnLeft.setEnabled(value);
+		btnRigth.setEnabled(value);
+		btnTakeoff.setEnabled(value);
+		btnLand.setEnabled(value);
 	}
 
 	@Override
@@ -321,14 +309,7 @@ public class CatroidDummy extends Activity implements
 		Toast.makeText(getApplicationContext(), "Disconnected to Drone",
 				Toast.LENGTH_SHORT).show();
 
-		btnDisconnect.setEnabled(false);
-		btnDown.setEnabled(false);
-		btnUp.setEnabled(false);
-		btnHover.setEnabled(false);
-		btnLeft.setEnabled(false);
-		btnRigth.setEnabled(false);
-		btnTakeoff.setEnabled(false);
-		btnLand.setEnabled(false);
+		enableButtons(false);
 	}
 
 	private void onTakeoffPressed() {
