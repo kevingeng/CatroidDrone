@@ -9,11 +9,19 @@ import javax.microedition.khronos.opengles.GL10;
 import com.parrot.freeflight.R;
 import com.parrot.freeflight.R.id;
 import com.parrot.freeflight.activities.SettingsDialog;
+import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
+import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;
+import com.parrot.freeflight.receivers.DroneFlyingStateReceiver;
+import com.parrot.freeflight.receivers.DroneFlyingStateReceiverDelegate;
+import com.parrot.freeflight.receivers.DroneReadyReceiver;
+import com.parrot.freeflight.receivers.DroneReadyReceiverDelegate;
+import com.parrot.freeflight.receivers.DroneRecordReadyChangeReceiver;
 import com.parrot.freeflight.service.DroneControlService;
 import com.parrot.freeflight.service.commands.DroneServiceCommand;
 
 import android.R.layout;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +47,12 @@ import android.widget.Toast;
  * @author GeraldW
  * 
  */
-public class CatroidDummy extends Activity {
+public class CatroidDummy 
+extends Activity 
+implements DroneReadyReceiverDelegate, 
+DroneFlyingStateReceiverDelegate,
+DroneConnectionChangeReceiverDelegate
+{
 
 	private DroneControlService droneControlService;
 
@@ -58,6 +71,11 @@ public class CatroidDummy extends Activity {
 	private boolean isDroneConnected;
 	private float power = 0.2f;
 
+	
+	private BroadcastReceiver droneReadyReceiver;
+    private BroadcastReceiver droneConnectionChangeReceiver;
+	private DroneFlyingStateReceiver droneFlyingStateReceiver;
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -215,6 +233,11 @@ public class CatroidDummy extends Activity {
 				return false;
 			}
 		});
+		
+		droneReadyReceiver = new DroneReadyReceiver(this);
+        droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
+
+		//droneFlyingStateReceiver = new DroneFlyingStateReceiverDelegate(this);
 
 	}
 
@@ -386,5 +409,31 @@ public class CatroidDummy extends Activity {
 
 		}
 	}
+
+	@Override
+	public void onDroneFlyingStateChanged(boolean flying) {
+		Log.d("Drone","onDroneFlyingStateChanged");
+		
+	}
+
+	@Override
+	public void onDroneReady() {
+		// TODO Auto-generated method stub
+		Log.d("Drone","onDroneReady");
+	}
+
+	@Override
+	public void onDroneConnected() {
+		Log.d("Drone","onDroneConnected");
+		
+		
+	}
+
+	@Override
+	public void onDroneDisconnected() {
+		Log.d("Drone","onDroneConnected");
+		
+	} 
+	
 
 }
