@@ -11,10 +11,12 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -238,6 +240,8 @@ public class CatroidDummy extends Activity implements
 		droneReadyReceiver = new DroneReadyReceiver(this);
 		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
 
+		// onConnectPressed();
+
 		// droneFlyingStateReceiver = new
 		// DroneFlyingStateReceiverDelegate(this);
 
@@ -269,7 +273,14 @@ public class CatroidDummy extends Activity implements
 	@Override
 	public void onResume() {
 		super.onResume();
-		// TODO Auto-generated method stub
+		Log.d("Drone", "onResume");
+		LocalBroadcastManager manager = LocalBroadcastManager
+				.getInstance(getApplicationContext());
+		manager.registerReceiver(droneReadyReceiver, new IntentFilter(
+				DroneControlService.DRONE_STATE_READY_ACTION));
+		manager.registerReceiver(droneConnectionChangeReceiver,
+				new IntentFilter(
+						DroneControlService.DRONE_CONNECTION_CHANGED_ACTION));
 
 	}
 
