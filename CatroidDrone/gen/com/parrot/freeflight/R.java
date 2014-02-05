@@ -524,7 +524,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int barProgress=0x7f0d0080;
         public static final int bottomBar=0x7f0d004a;
         public static final int bottomText=0x7f0d0061;
-        public static final int btnAcademy=0x7f0d0015;
+        public static final int btnAcademy=0x7f0d0016;
         public static final int btnBack=0x7f0d002d;
         public static final int btnBattery=0x7f0d0065;
         public static final int btnCalibration=0x7f0d002b;
@@ -534,15 +534,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int btnDelete=0x7f0d008c;
         public static final int btnDone=0x7f0d0005;
         public static final int btnEdit=0x7f0d0089;
-        public static final int btnFirmwareUpdate=0x7f0d0017;
+        public static final int btnFirmwareUpdate=0x7f0d0018;
         public static final int btnFlatTrim=0x7f0d0037;
-        public static final int btnFreeFlight=0x7f0d0014;
-        public static final int btnGames=0x7f0d0018;
-        public static final int btnGetYourDrone=0x7f0d0019;
+        public static final int btnFreeFlight=0x7f0d0015;
+        public static final int btnGames=0x7f0d0019;
+        public static final int btnGetYourDrone=0x7f0d001a;
         public static final int btnGoBack=0x7f0d0071;
         public static final int btnGoForward=0x7f0d0072;
         public static final int btnNext=0x7f0d0033;
-        public static final int btnPhotosVideos=0x7f0d0016;
+        public static final int btnPhotosVideos=0x7f0d0017;
         public static final int btnPrev=0x7f0d0032;
         public static final int btnSelectClear=0x7f0d008b;
         public static final int btnShare=0x7f0d006f;
@@ -568,7 +568,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int grid=0x7f0d0083;
         public static final int guestSpaceRoot=0x7f0d0048;
         public static final int header=0x7f0d008e;
-        public static final int header_preferences=0x7f0d0011;
+        public static final int header_preferences=0x7f0d0012;
         public static final int holder=0x7f0d0082;
         public static final int image=0x7f0d0078;
         public static final int imageFacebook=0x7f0d0059;
@@ -594,7 +594,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int imgBattery=0x7f0d0075;
         public static final int imgForward=0x7f0d0004;
         public static final int imgHintContainer=0x7f0d005f;
-        public static final int imgLogo=0x7f0d0012;
+        public static final int imgLogo=0x7f0d0013;
         public static final int infoPager=0x7f0d0045;
         public static final int labelAltitudeLimit=0x7f0d00c0;
         public static final int labelMotorsVersion=0x7f0d0096;
@@ -629,7 +629,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int rgVideoCodec=0x7f0d00cb;
         public static final int rootLayout=0x7f0d00ce;
         public static final int seekAltitudeLimit=0x7f0d00bc;
-        public static final int seekBarPower=0x7f0d0010;
+        public static final int seekBarPower=0x7f0d0011;
         public static final int seekDeviceTiltMax=0x7f0d0029;
         public static final int seekInterfaceOpacity=0x7f0d001e;
         public static final int seekTiltMax=0x7f0d00bf;
@@ -665,7 +665,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textTotalTime=0x7f0d0081;
         public static final int textTwitter=0x7f0d005d;
         public static final int textUrlWeb=0x7f0d0050;
-        public static final int textView1=0x7f0d001b;
+        public static final int textView1=0x7f0d0010;
         public static final int textView10=0x7f0d00b4;
         public static final int textView11=0x7f0d00b5;
         public static final int textView2=0x7f0d001d;
@@ -685,7 +685,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int toggleLoopingEnabled=0x7f0d0022;
         public static final int toggleOutdoorFlight=0x7f0d00c9;
         public static final int toggleOutdoorHull=0x7f0d00c8;
-        public static final int togglePairing=0x7f0d001a;
+        public static final int togglePairing=0x7f0d001b;
         public static final int toggleUsbRecord=0x7f0d0021;
         public static final int txtAltitudeLimit=0x7f0d00c4;
         public static final int txtBatteryStatus=0x7f0d0076;
@@ -700,7 +700,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int txtTiltMax=0x7f0d00c7;
         public static final int txtTime=0x7f0d0073;
         public static final int txtTitle=0x7f0d002e;
-        public static final int txtVersion=0x7f0d0013;
+        public static final int txtVersion=0x7f0d0014;
         public static final int txtVerticalSpeedMax=0x7f0d00c5;
         public static final int txtYawSpeedMax=0x7f0d00c6;
         public static final int txt_title=0x7f0d006e;
