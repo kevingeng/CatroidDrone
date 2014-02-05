@@ -223,6 +223,7 @@ public class CatroidDummy extends Activity implements
 
 		droneReadyReceiver = new DroneReadyReceiver(this);
 		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
+		droneFlyingStateReceiver = new DroneFlyingStateReceiver(this);
 
 		// onConnectPressed();
 
@@ -301,11 +302,9 @@ public class CatroidDummy extends Activity implements
 
 	private void onDisconnectPressed() {
 		Log.d("Drone", "onDisconnectPressed");
-		try {
-			getApplicationContext().unbindService(mConnection);
-		} catch (IllegalArgumentException e) {
-			// Exception will be ignored
-		}
+
+		unbindService(mConnection);
+
 		Toast.makeText(getApplicationContext(), "Disconnected to Drone",
 				Toast.LENGTH_SHORT).show();
 
@@ -439,7 +438,7 @@ public class CatroidDummy extends Activity implements
 
 	@Override
 	public void onDroneDisconnected() {
-		Log.d("Drone", "onDroneConnected");
+		Log.d("Drone", "onDroneDisconnected");
 
 	}
 
