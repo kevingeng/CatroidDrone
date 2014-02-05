@@ -7,6 +7,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -26,13 +27,21 @@ import android.widget.Toast;
 
 import com.parrot.freeflight.R;
 import com.parrot.freeflight.R.id;
+import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
+import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;
+import com.parrot.freeflight.receivers.DroneFlyingStateReceiver;
+import com.parrot.freeflight.receivers.DroneFlyingStateReceiverDelegate;
+import com.parrot.freeflight.receivers.DroneReadyReceiver;
+import com.parrot.freeflight.receivers.DroneReadyReceiverDelegate;
 import com.parrot.freeflight.service.DroneControlService;
 
 /**
  * @author GeraldW
  * 
  */
-public class CatroidDummy extends Activity {
+public class CatroidDummy extends Activity implements
+		DroneReadyReceiverDelegate, DroneFlyingStateReceiverDelegate,
+		DroneConnectionChangeReceiverDelegate {
 
 	private DroneControlService droneControlService;
 
@@ -50,6 +59,10 @@ public class CatroidDummy extends Activity {
 
 	private boolean isDroneConnected;
 	private float power = 0.2f;
+
+	private BroadcastReceiver droneReadyReceiver;
+	private BroadcastReceiver droneConnectionChangeReceiver;
+	private DroneFlyingStateReceiver droneFlyingStateReceiver;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -205,6 +218,12 @@ public class CatroidDummy extends Activity {
 				return false;
 			}
 		});
+
+		droneReadyReceiver = new DroneReadyReceiver(this);
+		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
+
+		// droneFlyingStateReceiver = new
+		// DroneFlyingStateReceiverDelegate(this);
 
 		// disable buttons until we there is no connection
 		enableButtons(false);
@@ -387,6 +406,30 @@ public class CatroidDummy extends Activity {
 			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 
 		}
+	}
+
+	@Override
+	public void onDroneFlyingStateChanged(boolean flying) {
+		Log.d("Drone", "onDroneFlyingStateChanged");
+
+	}
+
+	@Override
+	public void onDroneReady() {
+		// TODO Auto-generated method stub
+		Log.d("Drone", "onDroneReady");
+	}
+
+	@Override
+	public void onDroneConnected() {
+		Log.d("Drone", "onDroneConnected");
+
+	}
+
+	@Override
+	public void onDroneDisconnected() {
+		Log.d("Drone", "onDroneConnected");
+
 	}
 
 }
