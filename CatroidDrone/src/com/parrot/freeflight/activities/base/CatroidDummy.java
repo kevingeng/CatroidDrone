@@ -338,12 +338,12 @@ public class CatroidDummy extends Activity implements
 	}
 
 	public void onMoveLeftPressed(final float power) {
-		Log.d("Drone", "turnLeft");
+		Log.d("Drone", "moveLeft");
 		droneControlService.moveLeft(power);
 	}
 
 	public void onMoveRightPressed(final float power) {
-		Log.d("Drone", "turnRight");
+		Log.d("Drone", "moveRight");
 		droneControlService.moveRight(power);
 	}
 
