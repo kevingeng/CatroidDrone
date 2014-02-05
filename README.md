@@ -10,6 +10,7 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
  
    ``sudo apt-get install ia32-libs`` 
 3. Install the build essentials:
+
    ``sudo apt-get install libgtk2.0-dev`` 
 
    ``sudo apt-get install libsdl1.2-dev`` 
@@ -17,6 +18,7 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
    ``sudo apt-get install libiw-dev``
    
 3. Set the following environment variables according to your setup: 
+ 
  ``ANDROID_SDK_PATH`` ``ANDROID_NDK_PATH`` and ``ARDRONE_LIB_PATH=<repository dir>/ARDroneLib``
 
   On Ubuntu add the path variables to the ``/etc/bash.bashrc`` 
