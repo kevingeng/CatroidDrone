@@ -28,7 +28,7 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
   
 3. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
 4. Plug in your device and run ``./build.sh release``
-5. Software Versions used: Ubuntu Release 12.04 (precise) 64-bit, Android NDK r9c 32bit, OpenJDK 64-Bit 1.7.0_51
+5. Software Versions used: Ubuntu Release 12.04 (precise) 64-bit, Android NDK r9c, OpenJDK 64-Bit 1.7.0_51
 
 ##Development
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/blob/master/README.md#build-apk)
