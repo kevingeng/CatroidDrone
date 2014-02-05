@@ -426,7 +426,6 @@ public class CatroidDummy extends Activity implements
 
 	@Override
 	public void onDroneReady() {
-		// TODO Auto-generated method stub
 		Log.d("Drone", "onDroneReady");
 	}
 
