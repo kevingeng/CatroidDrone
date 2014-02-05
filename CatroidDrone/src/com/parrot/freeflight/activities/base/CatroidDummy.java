@@ -6,21 +6,12 @@ package com.parrot.freeflight.activities.base;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import com.parrot.freeflight.R;
-import com.parrot.freeflight.R.id;
-import com.parrot.freeflight.activities.SettingsDialog;
-import com.parrot.freeflight.service.DroneControlService;
-import com.parrot.freeflight.service.commands.DroneServiceCommand;
-
-import android.R.layout;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.drawable.Drawable;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.Renderer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -28,12 +19,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
+
+import com.parrot.freeflight.R;
+import com.parrot.freeflight.R.id;
+import com.parrot.freeflight.service.DroneControlService;
 
 /**
  * @author GeraldW
@@ -58,11 +51,6 @@ public class CatroidDummy extends Activity {
 	private boolean isDroneConnected;
 	private float power = 0.2f;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -98,10 +86,28 @@ public class CatroidDummy extends Activity {
 					topView.setBackgroundColor(0xFF00FF00);
 					topView.invalidate();
 					isDroneConnected = true;
+
+					btnDisconnect.setEnabled(true);
+					btnDown.setEnabled(true);
+					btnUp.setEnabled(true);
+					btnHover.setEnabled(true);
+					btnLeft.setEnabled(true);
+					btnRigth.setEnabled(true);
+					btnTakeoff.setEnabled(true);
+					btnLand.setEnabled(true);
 				} else {
 					topView.setBackgroundColor(0xFFFF0000);
 					topView.invalidate();
 					isDroneConnected = false;
+
+					btnDisconnect.setEnabled(false);
+					btnDown.setEnabled(false);
+					btnUp.setEnabled(false);
+					btnHover.setEnabled(false);
+					btnLeft.setEnabled(false);
+					btnRigth.setEnabled(false);
+					btnTakeoff.setEnabled(false);
+					btnLand.setEnabled(false);
 				}
 			}
 		});
@@ -151,11 +157,11 @@ public class CatroidDummy extends Activity {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					moveUp(power);
+					onMoveUpPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					moveUp(0);
+					onMoveUpPressed(0);
 					return true;
 				}
 				return false;
@@ -169,11 +175,11 @@ public class CatroidDummy extends Activity {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					moveDown(power);
+					onMoveDownPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					moveDown(0);
+					onMoveDownPressed(0);
 					return true;
 				}
 				return false;
@@ -187,11 +193,11 @@ public class CatroidDummy extends Activity {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					moveLeft(power);
+					onMoveLeftPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					moveLeft(0);
+					onMoveLeftPressed(0);
 					return true;
 				}
 				return false;
@@ -205,16 +211,26 @@ public class CatroidDummy extends Activity {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					moveRight(power);
+					onMoveRightPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					moveRight(0);
+					onMoveRightPressed(0);
 					return true;
 				}
 				return false;
 			}
 		});
+
+		// disable buttons until we there is no connection
+		btnDisconnect.setEnabled(false);
+		btnDown.setEnabled(false);
+		btnUp.setEnabled(false);
+		btnHover.setEnabled(false);
+		btnLeft.setEnabled(false);
+		btnRigth.setEnabled(false);
+		btnTakeoff.setEnabled(false);
+		btnLand.setEnabled(false);
 
 	}
 
@@ -245,7 +261,6 @@ public class CatroidDummy extends Activity {
 
 	}
 
-
 	@Override
 	public void onStop() {
 		super.onStop();
@@ -264,7 +279,6 @@ public class CatroidDummy extends Activity {
 		Log.d("Drone", "onConnectPressed");
 		return bindService(new Intent(this, DroneControlService.class),
 				mConnection, Context.BIND_AUTO_CREATE);
-
 	}
 
 	private void onDisconnectPressed() {
@@ -276,18 +290,25 @@ public class CatroidDummy extends Activity {
 		}
 		Toast.makeText(getApplicationContext(), "Disconnected to Drone",
 				Toast.LENGTH_SHORT).show();
+
+		btnDisconnect.setEnabled(false);
+		btnDown.setEnabled(false);
+		btnUp.setEnabled(false);
+		btnHover.setEnabled(false);
+		btnLeft.setEnabled(false);
+		btnRigth.setEnabled(false);
+		btnTakeoff.setEnabled(false);
+		btnLand.setEnabled(false);
 	}
 
 	private void onTakeoffPressed() {
 		Log.d("Drone", "onTakeoffPressed");
 		droneControlService.triggerTakeOff();
-
 	}
 
 	private void onLandPresed() {
 		Log.d("Drone", "onLandPresed");
 		droneControlService.triggerTakeOff();
-
 	}
 
 	// NEW ----------------------------------
@@ -295,8 +316,8 @@ public class CatroidDummy extends Activity {
 		Log.d("Drone", "calibrateMagneto");
 		droneControlService.calibrateMagneto();
 	}
-	
-	public void trim(){
+
+	public void trim() {
 		Log.d("Drone", "calibrateMagneto");
 		droneControlService.flatTrim();
 	}
@@ -306,22 +327,22 @@ public class CatroidDummy extends Activity {
 		droneControlService.doLeftFlip();
 	}
 
-	public void moveLeft(final float power) {
+	public void onMoveLeftPressed(final float power) {
 		Log.d("Drone", "turnLeft");
-		droneControlService.turnLeft(power);
+		droneControlService.moveLeft(power);
 	}
 
-	public void moveRight(final float power) {
+	public void onMoveRightPressed(final float power) {
 		Log.d("Drone", "turnRight");
-		droneControlService.turnRight(power);
+		droneControlService.moveRight(power);
 	}
 
-	public void moveUp(final float power) {
+	public void onMoveUpPressed(final float power) {
 		Log.d("Drone", "moveUp");
 		droneControlService.moveUp(power);
 	}
 
-	public void moveDown(final float power) {
+	public void onMoveDownPressed(final float power) {
 		Log.d("Drone", "moveDown");
 		droneControlService.moveDown(power);
 	}
@@ -353,10 +374,10 @@ public class CatroidDummy extends Activity {
 
 		Toast.makeText(getApplicationContext(), "connected to Drone",
 				Toast.LENGTH_SHORT).show();
-		
-		//to calibrate the drone
+
+		// to calibrate the drone
 		droneControlService.flatTrim();
-		
+
 		// settingsDialog = new SettingsDialog(this, this, droneControlService,
 		// magnetoAvailable);
 
