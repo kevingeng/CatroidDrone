@@ -9,8 +9,12 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
 2. On 64 bit systems install the IA32 libs 
  
    ``sudo apt-get install ia32-libs`` 
+
+   On newer Ubuntu versions follow [this guide](http://askubuntu.com/questions/107230/what-happened-to-the-ia32-libs-package).
 3. Install the build essentials:
 
+   ``sudo apt-get install build-essential``
+   
    ``sudo apt-get install libgtk2.0-dev`` 
 
    ``sudo apt-get install libsdl1.2-dev`` 
@@ -39,9 +43,29 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
   
   ``export PATH=$PATH:$ANDROID_SDK_PATH/platform-tools``
   
-3. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
-4. Plug in your device and run ``./build.sh release``
-5. Software Versions used: Ubuntu Release 12.04 (precise) 64-bit, Android NDK r9c 32bit, OpenJDK 64-Bit 1.7.0_51
+4. Check your java version with the following command.
+
+   ``java -version``
+   
+   which should be
+   
+   ``java version "1.7.0_51\n"``
+   
+   ``OpenJDK Runtime Environment (IcedTea 2.4.4) (7u51-2.4.4-0ubuntu0.12.04.2)``
+   
+   ``OpenJDK 64-Bit Server VM (build 24.45-b08, mixed mode)``
+   
+   To install java execute:
+   
+   ``sudo apt-get install openjdk-7-jdk openjdk-7-source``
+   
+   To set the default java version run the following command:
+   
+   ``sudo update-alternatives --config java``
+   
+5. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
+6. Plug in your device and run ``./build.sh release``
+7. Software Versions used: Ubuntu Release 12.04 (precise) 64-bit, Android NDK r9c 32bit, OpenJDK 64-Bit 1.7.0_51
 
 ##Development
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/blob/master/README.md#build-apk)
