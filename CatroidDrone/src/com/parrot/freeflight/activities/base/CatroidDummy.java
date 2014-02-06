@@ -25,6 +25,7 @@ import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parrot.freeflight.R;
@@ -58,6 +59,7 @@ public class CatroidDummy extends Activity implements
 	private Button btnRigth;
 	private Button btnHover;
 	private SeekBar powerBar;
+	private TextView tvSpeeed;
 
 	private boolean isDroneConnected;
 	private float power = 0.2f;
@@ -81,6 +83,8 @@ public class CatroidDummy extends Activity implements
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				progressChanged = progress;
+				tvSpeeed.setText(Float.toString(progress));
+
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
@@ -220,6 +224,8 @@ public class CatroidDummy extends Activity implements
 				return false;
 			}
 		});
+
+		tvSpeeed = (TextView) findViewById(id.tv_speed_value);
 
 		droneReadyReceiver = new DroneReadyReceiver(this);
 		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);

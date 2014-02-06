@@ -6,9 +6,22 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
 ## Build APK
 
 1. Download and extract the actual Android [SDK](http://developer.android.com/sdk/index.html?utm_source=weibolife) and [NDK](http://developer.android.com/tools/sdk/ndk/index.html)
-2. Set the following environment variables according to your setup: ``ANDROID_SDK_PATH``, ``ANDROID_NDK_PATH`` and ``ARDRONE_LIB_PATH=<repository dir>/ARDroneLib``
+2. On 64 bit systems install the IA32 libs 
+ 
+   ``sudo apt-get install ia32-libs`` 
+3. Install the build essentials:
 
-  On Ubuntu add the Path Variables to the ``/etc/bash.bashrc`` 
+   ``sudo apt-get install libgtk2.0-dev`` 
+
+   ``sudo apt-get install libsdl1.2-dev`` 
+   
+   ``sudo apt-get install libiw-dev``
+   
+3. Set the following environment variables according to your setup: 
+ 
+ ``ANDROID_SDK_PATH`` ``ANDROID_NDK_PATH`` and ``ARDRONE_LIB_PATH=<repository dir>/ARDroneLib``
+
+  On Ubuntu add the path variables to the ``/etc/bash.bashrc`` 
   
   Add the following lines:
   

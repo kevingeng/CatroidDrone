@@ -17,7 +17,7 @@ gen/
 Build/
 obj/
 
-# Local configuration file (sdk path, etc)
+#Local configuration file (sdk path, etc)
 #local.properties
 
 # Eclipse project files
@@ -27,7 +27,12 @@ obj/
 ##########################
 # C gitignore from https://github.com/github/gitignore
 # Object files
-#*.o
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
 
 # Libraries
 *.lib
@@ -35,7 +40,6 @@ obj/
 
 # Shared objects (inc. Windows DLLs)
 *.dll
-*.so
 *.so.*
 *.dylib
 
@@ -44,19 +48,12 @@ obj/
 *.out
 *.app
 
-#######################
-# C++ gitignore https://github.com/github/gitignore
-# Compiled Object files
-*.slo
-*.lo
-*.o
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-
 # Compiled Static libraries
 *.lai
 *.la
-*.a
-/CatroidDrone
+
+
+
+
+
+
