@@ -20,13 +20,16 @@
 					<folderInfo id="com.android.toolchain.gcc.1200883213.370848089" name="/" resourcePath="">
 						<toolChain id="com.android.toolchain.gcc.1579133905" name="com.android.toolchain.gcc" superClass="com.android.toolchain.gcc">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="com.android.targetPlatform.1054625736" isAbstract="false" superClass="com.android.targetPlatform"/>
-							<builder id="com.android.builder.2110548151" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Android Builder" superClass="com.android.builder">
+							<builder buildPath="${workspace_loc:/CatroidDrone}" command="ndk-build" id="com.android.builder.2110548151" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Android Builder" superClass="com.android.builder">
 								<outputEntries>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="obj"/>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="libs"/>
 								</outputEntries>
 							</builder>
 							<tool id="com.android.gcc.compiler.1113672346" name="Android GCC Compiler" superClass="com.android.gcc.compiler">
+								<option id="com.android.gcc.option.includePath.1834076066" superClass="com.android.gcc.option.includePath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ARDRONE_LIB_PATH}/VP_SDK/VP_Os&quot;"/>
+								</option>
 								<inputType id="com.android.gcc.inputType.831723064" superClass="com.android.gcc.inputType"/>
 							</tool>
 						</toolChain>
@@ -49,4 +52,10 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.android.AndroidPerProjectProfile"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/CatroidDrone"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
