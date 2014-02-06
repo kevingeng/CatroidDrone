@@ -191,41 +191,57 @@ public class CatroidDummy extends Activity implements
 			}
 		});
 
-		btnLeft = (Button) findViewById(id.btn_Left);
-		btnLeft.setOnTouchListener(new OnTouchListener() {
+		btnLeft = (Button) findViewById(R.id.btn_Left);
+		btnLeft.setOnClickListener(new OnClickListener() {
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_DOWN:
-					// PRESSED
-					onMoveLeftPressed(power);
-					return true;
-				case MotionEvent.ACTION_UP:
-					// RELEASED
-					onMoveLeftPressed(0);
-					return true;
-				}
-				return false;
+			public void onClick(View v) {
+				onMoveLeftPressed(0.3f);
 			}
 		});
 
-		btnRigth = (Button) findViewById(id.btn_Right);
-		btnRigth.setOnTouchListener(new OnTouchListener() {
+		btnRigth = (Button) findViewById(R.id.btn_Right);
+		btnRigth.setOnClickListener(new OnClickListener() {
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_DOWN:
-					// PRESSED
-					onMoveRightPressed(power);
-					return true;
-				case MotionEvent.ACTION_UP:
-					// RELEASED
-					onMoveRightPressed(0);
-					return true;
-				}
-				return false;
+			public void onClick(View v) {
+				onMoveRightPressed(0.3f);
 			}
 		});
+
+		// btnLeft = (Button) findViewById(id.btn_Left);
+		// btnLeft.setOnTouchListener(new OnTouchListener() {
+		// @Override
+		// public boolean onTouch(View v, MotionEvent event) {
+		// switch (event.getAction()) {
+		// case MotionEvent.ACTION_DOWN:
+		// // PRESSED
+		// onMoveLeftPressed(power);
+		// return true;
+		// case MotionEvent.ACTION_UP:
+		// // RELEASED
+		// onMoveLeftPressed(0);
+		// return true;
+		// }
+		// return false;
+		// }
+		// });
+		//
+		// btnRigth = (Button) findViewById(id.btn_Right);
+		// btnRigth.setOnTouchListener(new OnTouchListener() {
+		// @Override
+		// public boolean onTouch(View v, MotionEvent event) {
+		// switch (event.getAction()) {
+		// case MotionEvent.ACTION_DOWN:
+		// // PRESSED
+		// onMoveRightPressed(power);
+		// return true;
+		// case MotionEvent.ACTION_UP:
+		// // RELEASED
+		// onMoveRightPressed(0);
+		// return true;
+		// }
+		// return false;
+		// }
+		// });
 
 		btnBack = (Button) findViewById(id.btn_Backward);
 		btnBack.setOnTouchListener(new OnTouchListener() {
@@ -442,7 +458,7 @@ public class CatroidDummy extends Activity implements
 				Toast.LENGTH_SHORT).show();
 
 		// to calibrate the drone
-		droneControlService.flatTrim();
+		// droneControlService.flatTrim();
 
 		// settingsDialog = new SettingsDialog(this, this, droneControlService,
 		// magnetoAvailable);
