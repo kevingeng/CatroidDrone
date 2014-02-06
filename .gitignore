@@ -1,4 +1,5 @@
 .gitignore~
+.properties~
 
 # built application files
 *.apk
