@@ -58,6 +58,8 @@ public class CatroidDummy extends Activity implements
 	private Button btnLeft;
 	private Button btnRigth;
 	private Button btnHover;
+	private Button btnBack;
+	private Button btnForward;
 	private SeekBar powerBar;
 	private TextView tvSpeeed;
 
@@ -160,11 +162,13 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					onMoveUpPressed(power);
+					// onMoveUpPressed(power);
+					onMoveLeftPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					onMoveUpPressed(0);
+					// onMoveUpPressed(0);
+					onMoveLeftPressed(0);
 					return true;
 				}
 				return false;
@@ -178,11 +182,13 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					onMoveDownPressed(power);
+					// onMoveDownPressed(power);
+					onMoveRightPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					onMoveDownPressed(0);
+					// onMoveDownPressed(0);
+					onMoveRightPressed(0);
 					return true;
 				}
 				return false;
@@ -225,6 +231,42 @@ public class CatroidDummy extends Activity implements
 			}
 		});
 
+		btnBack = (Button) findViewById(id.btn_Backward);
+		btnBack.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					onMoveBackwardPressed(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					onMoveBackwardPressed(0);
+					return true;
+				}
+				return false;
+			}
+		});
+
+		btnForward = (Button) findViewById(id.btn_Forward);
+		btnForward.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					onMoveForwardPressed(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					onMoveForwardPressed(0);
+					return true;
+				}
+				return false;
+			}
+		});
+
 		tvSpeeed = (TextView) findViewById(id.tv_speed_value);
 
 		droneReadyReceiver = new DroneReadyReceiver(this);
@@ -256,6 +298,8 @@ public class CatroidDummy extends Activity implements
 		btnRigth.setEnabled(value);
 		btnTakeoff.setEnabled(value);
 		btnLand.setEnabled(value);
+		btnBack.setEnabled(value);
+		btnForward.setEnabled(value);
 	}
 
 	@Override
@@ -361,6 +405,16 @@ public class CatroidDummy extends Activity implements
 	public void onMoveDownPressed(final float power) {
 		Log.d("Drone", "moveDown");
 		droneControlService.moveDown(power);
+	}
+
+	public void onMoveBackwardPressed(final float power) {
+		Log.d("Drone", "moveBackward");
+		droneControlService.moveBackward(power);
+	}
+
+	public void onMoveForwardPressed(final float power) {
+		Log.d("Drone", "moveForward");
+		droneControlService.moveForward(power);
 	}
 
 	private ServiceConnection mConnection = new ServiceConnection() {
