@@ -29,19 +29,18 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
   
   Add the following lines:
   
-  ``export ANDROID_NDK_PATH=/home/gerald/dev_ardrone/android-ndk-r9c``
-  
-  ``export NDK_PATH=$ANDROID_NDK_PATH``
-  
-  ``export ANDROID_SDK_PATH=/home/gerald/dev_ardrone/android-sdk-linux``
-  
+  ```
+  export ANDROID_NDK_PATH=/home/gerald/dev_ardrone/android-ndk-r9c
+  export NDK_PATH=$ANDROID_NDK_PATH
+  export ANDROID_SDK_PATH=/home/gerald/dev_ardrone/android-sdk-linux
+  ```
   To configure your ``$PATH`` also add this lines to your ``/etc/bash.bashrc``
   
-  ``export PATH=$PATH:$NDK_PATH``
-  
-  ``export PATH=$PATH:$ANDROID_SDK_PATH/tools``
-  
-  ``export PATH=$PATH:$ANDROID_SDK_PATH/platform-tools``
+   ```
+  export PATH=$PATH:$NDK_PATH
+  export PATH=$PATH:$ANDROID_SDK_PATH/tools
+  export PATH=$PATH:$ANDROID_SDK_PATH/platform-tools
+   ```
   
 4. Check your java version with the following command.
 
@@ -49,12 +48,11 @@ Provides the ARDrone functions to the Catroid/Pocket Code project.
    
    which should be
    
-   ``java version "1.7.0_51\n"``
-   
-   ``OpenJDK Runtime Environment (IcedTea 2.4.4) (7u51-2.4.4-0ubuntu0.12.04.2)``
-   
-   ``OpenJDK 64-Bit Server VM (build 24.45-b08, mixed mode)``
-   
+   ```
+   java version "1.7.0_51"
+   OpenJDK Runtime Environment (IcedTea 2.4.4) (7u51-2.4.4-0ubuntu0.12.04.2)
+   OpenJDK 64-Bit Server VM (build 24.45-b08, mixed mode)
+   ```
    To install java execute:
    
    ``sudo apt-get install openjdk-7-jdk openjdk-7-source``
