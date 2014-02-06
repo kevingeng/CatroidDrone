@@ -162,13 +162,11 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					// onMoveUpPressed(power);
-					onMoveLeftPressed(power);
+					onMoveUpPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					// onMoveUpPressed(0);
-					onMoveLeftPressed(0);
+					onMoveUpPressed(0);
 					return true;
 				}
 				return false;
@@ -182,13 +180,11 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					// onMoveDownPressed(power);
-					onMoveRightPressed(power);
+					onMoveDownPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
-					// onMoveDownPressed(0);
-					onMoveRightPressed(0);
+					onMoveDownPressed(0);
 					return true;
 				}
 				return false;
