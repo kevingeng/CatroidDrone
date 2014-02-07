@@ -60,6 +60,8 @@ public class CatroidDummy extends Activity implements
 	private Button btnHover;
 	private Button btnBack;
 	private Button btnForward;
+	private Button btnTurnLeft;
+	private Button btnTurnRight;
 	private SeekBar powerBar;
 	private TextView tvSpeeed;
 
@@ -106,8 +108,6 @@ public class CatroidDummy extends Activity implements
 				if (onConnectPressed()) {
 					topView.setBackgroundColor(0xFF00FF00);
 					topView.invalidate();
-					isDroneConnected = true;
-					enableButtons(true);
 				} else {
 					topView.setBackgroundColor(0xFFFF0000);
 					topView.invalidate();
@@ -198,10 +198,16 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
+					droneControlService.setProgressiveCommandEnabled(true);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveLeftPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
+					droneControlService.setProgressiveCommandEnabled(false);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveLeftPressed(0);
 					return true;
 				}
@@ -216,10 +222,16 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
+					droneControlService.setProgressiveCommandEnabled(true);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveRightPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
+					droneControlService.setProgressiveCommandEnabled(false);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveRightPressed(0);
 					return true;
 				}
@@ -234,10 +246,16 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
+					droneControlService.setProgressiveCommandEnabled(true);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveBackwardPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
+					droneControlService.setProgressiveCommandEnabled(false);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveBackwardPressed(0);
 					return true;
 				}
@@ -252,11 +270,53 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
+					droneControlService.setProgressiveCommandEnabled(true);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveForwardPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
+					droneControlService.setProgressiveCommandEnabled(false);
+					droneControlService
+							.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveForwardPressed(0);
+					return true;
+				}
+				return false;
+			}
+		});
+
+		btnTurnLeft = (Button) findViewById(id.btn_turn_left);
+		btnTurnLeft.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					onTurnLeftPressed(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					onTurnLeftPressed(0);
+					return true;
+				}
+				return false;
+			}
+		});
+
+		btnTurnRight = (Button) findViewById(id.btn_turn_right);
+		btnTurnRight.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					// PRESSED
+					onTurnRightPressed(power);
+					return true;
+				case MotionEvent.ACTION_UP:
+					// RELEASED
+					onTurnRightPressed(0);
 					return true;
 				}
 				return false;
@@ -296,6 +356,8 @@ public class CatroidDummy extends Activity implements
 		btnLand.setEnabled(value);
 		btnBack.setEnabled(value);
 		btnForward.setEnabled(value);
+		btnTurnLeft.setEnabled(value);
+		btnTurnRight.setEnabled(value);
 	}
 
 	@Override
@@ -413,12 +475,25 @@ public class CatroidDummy extends Activity implements
 		droneControlService.moveForward(power);
 	}
 
+	public void onTurnLeftPressed(final float power) {
+		Log.d("Drone", "turnLeft");
+		droneControlService.turnLeft(power);
+	}
+
+	public void onTurnRightPressed(final float power) {
+		Log.d("Drone", "turnRight");
+		droneControlService.turnRight(power);
+	}
+
 	private ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			droneControlService = ((DroneControlService.LocalBinder) service)
 					.getService();
 			onDroneServiceConnected();
+
+			isDroneConnected = true;
+			enableButtons(true);
 		}
 
 		public void onServiceDisconnected(ComponentName name) {
@@ -442,7 +517,7 @@ public class CatroidDummy extends Activity implements
 				Toast.LENGTH_SHORT).show();
 
 		// to calibrate the drone
-		droneControlService.flatTrim();
+		// droneControlService.flatTrim();
 
 		// settingsDialog = new SettingsDialog(this, this, droneControlService,
 		// magnetoAvailable);
