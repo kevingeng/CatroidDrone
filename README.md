@@ -71,6 +71,6 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
 7. Plug in your device and run ``./build.sh release``
 
 ###Development
-1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/blob/master/README.md#build-apk)
+1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
 2. Download Eclipse and install the ADT plugin
 3. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
