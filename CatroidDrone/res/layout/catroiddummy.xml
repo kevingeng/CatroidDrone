@@ -116,11 +116,19 @@
             android:text="Down"
             android:textSize="25sp" />
     </TableRow>
-    
+
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/btn_Forward"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Front"
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btn_Backward"
@@ -129,13 +137,27 @@
             android:layout_weight="1"
             android:text="Back"
             android:textSize="25sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
 
         <Button
-            android:id="@+id/btn_Forward"
+            android:id="@+id/btn_turn_left"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Front"
+            android:text="Turn Left"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btn_turn_right"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Turn Right"
             android:textSize="25sp" />
     </TableRow>
 
@@ -165,7 +187,8 @@
             android:layout_gravity="center_vertical"
             android:text="Move Speed [%]"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-          <TextView
+
+        <TextView
             android:id="@+id/tv_speed_value"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
