@@ -69,9 +69,18 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
    
 6. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
 7. Plug in your device and run ``./build.sh release``
-8. Sometimes the script hangs. In this case run ``./build.sh release`` and try again.
+8. Sometimes the script hangs. In this case run ``./build.sh clean`` and try again.
 
-###Development
+###Development-IDE Eclipse
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
 2. Download Eclipse and install the ADT plugin
 3. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
+4. Click 'Run Configuration' and set a new configuration. Launch your Activity of choice. In our case we set it to CatroidDummy and save it. Now you are able to execute it.
+
+###Development-IDE Netbeans
+For those of you who prefer the Netbeans IDE, here a short instruction. The steps are mostly the same.
+
+1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
+2. Install Netbeans and the Android Plugin [Android Plugin](http://plugins.netbeans.org/plugin/19545/nbandroid)
+3. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
+4. Click Project/Properties/Run and choose your preferred Activity.
