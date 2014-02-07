@@ -12,12 +12,12 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
  
    ``sudo apt-get install ia32-libs`` 
 
-    Note: On newer Ubuntu versions the ia32-libs do not exist [do not exist anymore.](http://askubuntu.com/questions/107230/what-happened-to-the-ia32-libs-package).
-    You have to installe the following libraries instead:
+    Note: On newer Ubuntu versions the ia32-libs [do not exist anymore.](http://askubuntu.com/questions/107230/what-happened-to-the-ia32-libs-package).
+    You have to install the following libs instead:
     
     ``sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0``
     
-    ``apt-get install lib32stdc++6``
+    ``sudo apt-get install lib32stdc++6``
 
 3. Install the build essentials:
 
