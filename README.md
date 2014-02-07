@@ -25,7 +25,7 @@ You also have to install some libaries. Follow the instructions of the installat
    
    ``sudo apt-get install libiw-dev``
    
-3. Set the following environment variables according to your setup: 
+4. Set the following environment variables according to your setup: 
  
  ``ANDROID_SDK_PATH`` ``ANDROID_NDK_PATH`` and ``ARDRONE_LIB_PATH=<repository dir>/ARDroneLib``
 
@@ -46,7 +46,7 @@ You also have to install some libaries. Follow the instructions of the installat
   export PATH=$PATH:$ANDROID_SDK_PATH/platform-tools
    ```
   
-4. Check your java version with the following command.
+5. Check your java version with the following command.
 
    ``java -version``
    
@@ -65,9 +65,9 @@ You also have to install some libaries. Follow the instructions of the installat
    
    ``sudo update-alternatives --config java``
    
-5. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
-6. Plug in your device and run ``./build.sh release``
-7. Software Versions used: Ubuntu Release 12.04 (precise) 64-bit, Android NDK r9c 32bit, OpenJDK 64-Bit 1.7.0_51
+6. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
+7. Plug in your device and run ``./build.sh release``
+8. Software Versions used: Ubuntu Release 12.04 (precise) 64-bit, Android NDK r9c 32bit, OpenJDK 64-Bit 1.7.0_51
 
 ##Development
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/blob/master/README.md#build-apk)
