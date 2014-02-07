@@ -78,7 +78,7 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
 4. Click 'Run Configuration' and set a new configuration. Launch your Activity of choice. In our case we set it to CatroidDummy and save it. Now you are able to execute it.
 
 ###Development-IDE Netbeans
-For those of you who prefer the Netbeans IDE, here a short instruction. The steps are mostly the same.
+For those of you who prefer the Netbeans IDE, here a short guide. The steps are mostly the same.
 
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
 2. Install Netbeans and the Android Plugin [Android Plugin](http://plugins.netbeans.org/plugin/19545/nbandroid)
