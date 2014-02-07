@@ -81,6 +81,6 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
 For those of you who prefer the Netbeans IDE, here a short guide. The steps are mostly the same.
 
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
-2. Install Netbeans and the Android Plugin [Android Plugin](http://plugins.netbeans.org/plugin/19545/nbandroid)
+2. Install Netbeans and the [Android Plugin](http://plugins.netbeans.org/plugin/19545/nbandroid)
 3. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
 4. Click Project/Properties/Run and choose your preferred Activity.
