@@ -76,8 +76,9 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
 ###Development-IDE Eclipse
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
 2. Download Eclipse and install the ADT plugin
-3. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
-4. Click 'Run Configuration' and set a new configuration. Launch your Activity of choice. In our case we set it to CatroidDummy and save it. Now you are able to execute it.
+3. Set the NDK path in Eclipse: Window->Prefrences->Android->NDK
+4. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
+5. Click 'Run Configuration' and set a new configuration. Launch your Activity of choice. In our case we set it to CatroidDummy and save it. Now you are able to execute it.
 
 ###Development-IDE Netbeans
 For those of you who prefer the Netbeans IDE, here a short guide. The steps are mostly the same.
