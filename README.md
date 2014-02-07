@@ -69,6 +69,7 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
    
 6. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
 7. Plug in your device and run ``./build.sh release``
+8. Sometimes the script hangs. In this case run ``./build.sh release`` and try again.
 
 ###Development
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
