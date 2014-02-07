@@ -1,18 +1,20 @@
 CatroidDrone
 ============
 
-Provides the ARDrone functions to the Catroid/Pocket Code project.
+Provides ARDrone functionality to the Catroid/Pocket Code project.
 
-## Build APK
+### Build APK
+
+**Software Versions used:** Ubuntu Release **12.04 LTS (precise) 64-bit**, Android NDK **r9c 32bit**, OpenJDK **1.7.0_51 64-Bit**
 
 1. Download and extract the actual Android [SDK](http://developer.android.com/sdk/index.html?utm_source=weibolife) and [NDK](http://developer.android.com/tools/sdk/ndk/index.html)
 2. On 64 bit systems install the IA32 libs 
  
    ``sudo apt-get install ia32-libs`` 
 
-Note: On newer Ubuntu versions follow [this guide](http://askubuntu.com/questions/107230/what-happened-to-the-ia32-libs-package).
+    Note: On newer Ubuntu versions follow [this   guide](http://askubuntu.com/questions/107230/what-happened-to-the-ia32-libs-package).
 
-You also have to install some libaries. Follow the instructions of the installation script (build.sh). If the compilation failes please install the missing libs instructed by the script.
+    You also have to install some libaries. Follow the instructions of the installation script (build.sh). If the      compilation failes please install the missing libs instructed by the script.
    
 
 3. Install the build essentials:
@@ -67,9 +69,8 @@ You also have to install some libaries. Follow the instructions of the installat
    
 6. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
 7. Plug in your device and run ``./build.sh release``
-8. Software Versions used: Ubuntu Release 12.04 (precise) 64-bit, Android NDK r9c 32bit, OpenJDK 64-Bit 1.7.0_51
 
-##Development
+###Development
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/blob/master/README.md#build-apk)
 2. Download Eclipse and install the ADT plugin
 3. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
