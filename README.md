@@ -80,6 +80,14 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
 4. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone``
 5. Click 'Run Configuration' and set a new configuration. Launch your Activity of choice. In our case we set it to CatroidDummy and save it. Now you are able to execute it.
 
+###Development with Windows
+To develope with Windows the native libraries (``<repository dir>\CatroidDrone\CatroidDrone\libs\armeabi*\*.so``) have to be built once. Please follow the [build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk).
+
+1. Download the [ADT-Bundle for Windows](http://developer.android.com/sdk/index.html?utm_source=weibolife).
+2. Clone the project. 
+3. Import the project from ``<repository dir>/CatroidDrone/CatroidDrone`` in Eclipse.
+4. Disable the CDT builder: Right click on project -> Properties -> Builders -> (uncheck) CDT-Builder 
+
 ###Development-IDE Netbeans
 For those of you who prefer the Netbeans IDE, here a short guide. The steps are mostly the same.
 
