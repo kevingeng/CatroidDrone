@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p jni/ITTIAM
+
 source environment.properties
 
 eval ARDRONE_LIB_PATH_FULL=$ARDRONE_LIB_PATH
