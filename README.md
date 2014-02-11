@@ -28,8 +28,12 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
    ``sudo apt-get install libsdl1.2-dev`` 
    
    ``sudo apt-get install libiw-dev``
-   
-4. Set the following environment variables according to your setup: 
+
+4.  Install Ant build tool:
+    ``sudo apt-get install ant`` and 
+    ``sudo apt-get install rpl``
+
+5. Set the following environment variables according to your setup: 
  
  ``ANDROID_SDK_PATH`` ``ANDROID_NDK_PATH`` and ``ARDRONE_LIB_PATH=<repository dir>/ARDroneLib``
 
@@ -49,8 +53,13 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
   export PATH=$PATH:$ANDROID_SDK_PATH/tools
   export PATH=$PATH:$ANDROID_SDK_PATH/platform-tools
    ```
-  
-5. Check your java version with the following command.
+
+6. Install the necessary Android targets
+   Open a terminal and run the command ``android``
+
+   Check ``Android 4.2.2 (API 19)`` and ``Android 4.1.2 (API 16`` and install the packages.
+
+7. Check your java version with the following command.
 
    ``java -version``
    
@@ -69,9 +78,9 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
    
    ``sudo update-alternatives --config java``
    
-6. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
-7. Plug in your device and run ``./build.sh release``
-8. Sometimes the script hangs. In this case run ``./build.sh clean`` and try again.
+8. Open a terminal and change to the ``<repository dir>/CatroidDrone/CatroidDrone`` directory.
+9. Plug in your device and run ``./build.sh release``
+10. Sometimes the script hangs. In this case run ``./build.sh clean`` and try again.
 
 ###Development-IDE Eclipse
 1. Follow the [Build APK Guide](https://github.com/wagnergerald/CatroidDrone/#build-apk)
