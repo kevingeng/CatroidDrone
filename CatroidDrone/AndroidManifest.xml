@@ -19,70 +19,8 @@
         android:name="android.hardware.faketouch.multitouch.distinct" android:required="false"/>
     <uses-feature android:name="android.hardware.multitouch.distinct" android:required="false"/>
     <uses-feature android:name="android.hardware.wifi" android:required="true"/>
-    <application android:allowClearUserData="true"
-        android:icon="@drawable/icon" android:label="@string/app_name"
-        android:largeHeap="true" android:name=".FreeFlightApplication" android:theme="@style/FreeFlightTheme">
-        <activity
-            android:name=".activities.SplashActivity"
-            android:configChanges="orientation"
-            android:excludeFromRecents="true"
-            android:finishOnTaskLaunch="true"
-            android:label="@string/app_name"
-            android:launchMode="singleTask"
-            android:noHistory="true"
-            android:screenOrientation="landscape"
-            android:theme="@style/FreeFlight.SplashScreen">          
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!--created by gerald at 2013-07-24 15:54:16-->
-        <activity android:name=".activities.base.CatroidDummy"
-            android:taskAffinity="com.parrot.freeflight.activities.base.CatroidDummy"
-            android:label="@string/app_name_dummy">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity android:excludeFromRecents="true"
-            android:finishOnTaskLaunch="true"
-            android:name=".activities.ConnectActivity"
-            android:noHistory="true"
-            android:screenOrientation="landscape" android:stateNotNeeded="true"/>
-        <activity
-            android:configChanges="touchscreen|keyboardHidden|orientation"
-            android:finishOnTaskLaunch="true"
-            android:hardwareAccelerated="true"
-            android:launchMode="singleInstance"
-            android:name=".activities.ControlDroneActivity"
-            android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.HudScreen"/>
+    <application >
         <service android:name=".service.DroneControlService"/>
-        <activity android:finishOnTaskLaunch="true"
-            android:hardwareAccelerated="false"
-            android:name=".activities.MediaActivity" android:screenOrientation="landscape"/>
-        <activity android:finishOnTaskLaunch="true"
-            android:hardwareAccelerated="false"
-            android:launchMode="singleTask"
-            android:name=".activities.DashboardActivity"
-            android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.Dashboard"/>
-        <activity android:finishOnTaskLaunch="true"
-            android:launchMode="singleTask"
-            android:name=".activities.UpdateFirmwareActivity"
-            android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.FirmwareUpdateScreen"/>
-        <activity android:finishOnTaskLaunch="true"
-            android:hardwareAccelerated="true"
-            android:name=".activities.GalleryActivity" android:screenOrientation="landscape"/>
-        <activity android:finishOnTaskLaunch="true"
-            android:hardwareAccelerated="true"
-            android:name=".activities.GuestSpaceActivity" android:screenOrientation="landscape"/>
-        <activity android:finishOnTaskLaunch="true"
-            android:name=".activities.BrowserActivity"
-            android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.BrowserScreen"/>
-        <service android:name=".transcodeservice.TranscodingService"/>
-        <service android:name=".updater.FirmwareUpdateService"/>
-        <uses-library android:name="com.sony.btv.remotesensor" android:required="false"/>
-        <uses-library android:name="com.google.android.tv" android:required="false"/>
+
     </application>
 </manifest>
