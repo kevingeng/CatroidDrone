@@ -768,6 +768,10 @@ public class DroneControlService extends Service implements Runnable,
 				|| currState instanceof PausedServiceState;
 	}
 
+	public void playLedAnimation() {
+		droneProxy.playLedAnimation(5.0f, 10);
+	}
+
 	public void requestDroneStatus() {
 		onBatteryStateChanged(prevNavData.batteryStatus);
 		onRecordChanged(prevNavData.recording, prevNavData.usbActive,

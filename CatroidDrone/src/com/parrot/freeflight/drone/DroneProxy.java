@@ -290,6 +290,7 @@ public class DroneProxy
 	public native void resetConfigToDefaults();
 	public native void takePhoto();
 	public native void record();
+	public native void playLedAnimation(float frequency, long duration);
 	public native void calibrateMagneto();
 	public native void doFlip();
 	public native void setLocation(double latitude, double longitude, double altitude);

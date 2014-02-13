@@ -294,7 +294,8 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					onTurnLeftPressed(power);
+					// onTurnLeftPressed(power);
+					droneControlService.playLedAnimation();
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED

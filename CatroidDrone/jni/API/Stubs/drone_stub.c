@@ -636,6 +636,21 @@ Java_com_parrot_freeflight_drone_DroneProxy_takeConfigSnapshot(JNIEnv *env, jobj
 	return configObj;
 }
 
+JNIEXPORT void JNICALL
+Java_com_parrot_freeflight_drone_DroneProxy_playLedAnimation(JNIEnv *env, jobject obj, jfloat frequency, jlong duration)
+{
+//http://stackoverflow.com/questions/18135586/what-is-the-jni-equivalent-to-an-unsigned-char-pointer
+/*	char param[50];
+	float frequency = 2.0;
+	ARDRONE_LED_ANIMATION leds_anim = ARDRONE_LED_ANIMATION_BLINK_ORANGE;
+	snprintf (param, sizeof (param), "%d,%d,%d", ARDRONE_LED_ANIMATION_BLINK_ORANGE, *(unsigned	int *)&frequency, 5);
+	ARDRONE_TOOL_CONFIGURATION_ADDEVENT (leds_anim, param, NULL);*/
+	char param[50];
+	float frequency_local = 2.0;
+	snprintf (param, sizeof (param), "%d,%d,%d", ARDRONE_LED_ANIMATION_BLINK_ORANGE, *(unsigned	int *)&frequency_local, 5);
+	ARDRONE_TOOL_CONFIGURATION_ADDEVENT (leds_anim, param, NULL);
+	//LOGD(TAG, "playLedAnimation [OK]");
+}
 
 JNIEXPORT void JNICALL
 Java_com_parrot_freeflight_drone_DroneProxy_resetConfigToDefaults(JNIEnv *env, jobject obj)
