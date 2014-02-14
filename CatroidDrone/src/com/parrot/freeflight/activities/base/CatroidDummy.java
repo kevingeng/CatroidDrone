@@ -63,6 +63,7 @@ public class CatroidDummy extends Activity implements
 	private Button btnForward;
 	private Button btnTurnLeft;
 	private Button btnTurnRight;
+	private Button btnLEDAnimation;
 	private SeekBar powerBar;
 	private TextView tvSpeeed;
 
@@ -295,13 +296,7 @@ public class CatroidDummy extends Activity implements
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
-					// onTurnLeftPressed(power);
-					droneControlService
-							.playLedAnimation(
-									5.0f,
-									3,
-									ARDRONE_LED_ANIMATION.ARDRONE_LED_ANIMATION_BLINK_ORANGE
-											.ordinal());
+					onTurnLeftPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
@@ -327,6 +322,19 @@ public class CatroidDummy extends Activity implements
 					return true;
 				}
 				return false;
+			}
+		});
+
+		btnLEDAnimation = (Button) findViewById(id.btn_LedAnimation);
+		btnLEDAnimation.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				droneControlService
+						.playLedAnimation(
+								5.0f,
+								3,
+								ARDRONE_LED_ANIMATION.ARDRONE_LED_ANIMATION_BLINK_ORANGE
+										.ordinal());
 			}
 		});
 
@@ -365,6 +373,7 @@ public class CatroidDummy extends Activity implements
 		btnForward.setEnabled(value);
 		btnTurnLeft.setEnabled(value);
 		btnTurnRight.setEnabled(value);
+		btnLEDAnimation.setEnabled(value);
 	}
 
 	@Override
