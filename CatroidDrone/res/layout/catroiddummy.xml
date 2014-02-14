@@ -23,7 +23,7 @@
             android:gravity="center"
             android:hint="Simple App for Drone Control"
             android:padding="18dip"
-            android:text="DRON CONTROL"
+            android:text="DRONE CONTROL"
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="normal|bold" />
