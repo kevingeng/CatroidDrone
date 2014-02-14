@@ -637,19 +637,13 @@ Java_com_parrot_freeflight_drone_DroneProxy_takeConfigSnapshot(JNIEnv *env, jobj
 }
 
 JNIEXPORT void JNICALL
-Java_com_parrot_freeflight_drone_DroneProxy_playLedAnimation(JNIEnv *env, jobject obj, jfloat frequency, jlong duration)
+Java_com_parrot_freeflight_drone_DroneProxy_playLedAnimation(JNIEnv *env, jobject obj, jfloat frequency, jint duration, jint animation_mode)
 {
-//http://stackoverflow.com/questions/18135586/what-is-the-jni-equivalent-to-an-unsigned-char-pointer
-/*	char param[50];
-	float frequency = 2.0;
-	ARDRONE_LED_ANIMATION leds_anim = ARDRONE_LED_ANIMATION_BLINK_ORANGE;
-	snprintf (param, sizeof (param), "%d,%d,%d", ARDRONE_LED_ANIMATION_BLINK_ORANGE, *(unsigned	int *)&frequency, 5);
-	ARDRONE_TOOL_CONFIGURATION_ADDEVENT (leds_anim, param, NULL);*/
-	char param[50];
-	float frequency_local = 2.0;
-	snprintf (param, sizeof (param), "%d,%d,%d", ARDRONE_LED_ANIMATION_BLINK_ORANGE, *(unsigned	int *)&frequency_local, 5);
-	ARDRONE_TOOL_CONFIGURATION_ADDEVENT (leds_anim, param, NULL);
-	//LOGD(TAG, "playLedAnimation [OK]");
+	char buffer[50];
+	snprintf (buffer, sizeof (buffer), "%d,%d,%d", animation_mode, *(unsigned	int *)&frequency, duration);
+	ARDRONE_TOOL_CONFIGURATION_ADDEVENT (leds_anim, buffer, NULL);
+	LOGD(ANDROID_LOG_DEBUG, "playLedAnimation [OK] : buffer --> ");
+	__android_log_print(ANDROID_LOG_DEBUG, "BUFFER", "buffer: %s", buffer); // buffer: '3,1073741824,5' --> see AT command leds_anim S88
 }
 
 JNIEXPORT void JNICALL

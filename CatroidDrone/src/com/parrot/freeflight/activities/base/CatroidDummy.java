@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.parrot.freeflight.R;
 import com.parrot.freeflight.R.id;
+import com.parrot.freeflight.drone.DroneProxy.ARDRONE_LED_ANIMATION;
 import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
 import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;
 import com.parrot.freeflight.receivers.DroneFlyingStateReceiver;
@@ -295,7 +296,12 @@ public class CatroidDummy extends Activity implements
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
 					// onTurnLeftPressed(power);
-					droneControlService.playLedAnimation();
+					droneControlService
+							.playLedAnimation(
+									5.0f,
+									3,
+									ARDRONE_LED_ANIMATION.ARDRONE_LED_ANIMATION_BLINK_ORANGE
+											.ordinal());
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED

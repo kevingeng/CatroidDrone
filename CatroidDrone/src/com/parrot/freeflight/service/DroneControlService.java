@@ -768,8 +768,9 @@ public class DroneControlService extends Service implements Runnable,
 				|| currState instanceof PausedServiceState;
 	}
 
-	public void playLedAnimation() {
-		droneProxy.playLedAnimation(5.0f, 10);
+	public void playLedAnimation(float frequency, int duration,
+			int animationMode) {
+		droneProxy.playLedAnimation(frequency, duration, animationMode);
 	}
 
 	public void requestDroneStatus() {

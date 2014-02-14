@@ -207,7 +207,15 @@
 		    	</exec>
 	</target>
 
-	<target name="-post-build">
+    <target name="deinstall-APK">
+		<echo message="deinstall previous apk on device ..." /> 
+		 <exec executable="sh">
+                <arg value="-c" />
+	        <arg value="adb shell pm uninstall com.parrot.freeflight" />
+           </exec>
+    </target>
+
+	<target name="-post-build" depends="deinstall-APK">
 	    <echo message="install apk on device ..." /> 
            <exec executable="sh">
                 <arg value="-c" />
