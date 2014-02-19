@@ -643,7 +643,7 @@ Java_com_parrot_freeflight_drone_DroneProxy_playLedAnimation(JNIEnv *env, jobjec
 	snprintf (buffer, sizeof (buffer), "%d,%d,%d", animation_mode, *(unsigned	int *)&frequency, duration);
 	ARDRONE_TOOL_CONFIGURATION_ADDEVENT (leds_anim, buffer, NULL);
 	LOGD(ANDROID_LOG_DEBUG, "playLedAnimation [OK] : buffer --> ");
-	__android_log_print(ANDROID_LOG_DEBUG, "BUFFER", "buffer: %s", buffer); // buffer: '3,1073741824,5' --> see AT command leds_anim S88
+	//__android_log_print(ANDROID_LOG_DEBUG, "BUFFER", "buffer: %s", buffer); // buffer: '3,1073741824,5' --> see AT command leds_anim S88
 }
 
 JNIEXPORT void JNICALL
