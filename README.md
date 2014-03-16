@@ -55,7 +55,9 @@ Provides ARDrone functionality to the Catroid/Pocket Code project.
    ```
 
 6. Install the necessary Android targets
-   Open a terminal and run the command ``android``
+   Open a terminal and run the command:
+
+   ``android update sdk -u -n -t 16,19``
 
    Check ``Android 4.2.2 (API 19)`` and ``Android 4.1.2 (API 16`` and install the packages.
 
