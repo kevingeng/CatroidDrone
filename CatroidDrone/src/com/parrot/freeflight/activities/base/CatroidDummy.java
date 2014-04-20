@@ -28,8 +28,8 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parrot.freeflight.R;
-import com.parrot.freeflight.R.id;
+import com.parrot.freeflight.catroid.R;
+import com.parrot.freeflight.catroid.R.id;
 import com.parrot.freeflight.drone.DroneProxy.ARDRONE_LED_ANIMATION;
 import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
 import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;

@@ -36,7 +36,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.parrot.freeflight.FreeFlightApplication;
-import com.parrot.freeflight.R;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.base.ParrotActivity;
 import com.parrot.freeflight.drone.DroneConfig;
 import com.parrot.freeflight.drone.DroneConfig.EDroneVersion;

@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.parrot.freeflight.R;
+import com.parrot.freeflight.catroid.R;
 
 public class ConnectScreenViewController 
 {	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest android:installLocation="auto" android:versionCode="20000"
-    android:versionName="2.0-SDK" package="com.parrot.freeflight" xmlns:android="http://schemas.android.com/apk/res/android">
+    android:versionName="2.0-SDK" package="com.parrot.freeflight.catroid" xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
@@ -21,9 +21,9 @@
     <uses-feature android:name="android.hardware.wifi" android:required="true"/>
     <application android:allowClearUserData="true"
         android:icon="@drawable/icon" android:label="@string/app_name"
-        android:largeHeap="true" android:name=".FreeFlightApplication" android:theme="@style/FreeFlightTheme">
+        android:largeHeap="true" android:name="com.parrot.freeflight.FreeFlightApplication" android:theme="@style/FreeFlightTheme">
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.parrot.freeflight.activities.SplashActivity"
             android:configChanges="orientation"
             android:excludeFromRecents="true"
             android:finishOnTaskLaunch="true"
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <!--created by gerald at 2013-07-24 15:54:16-->
-        <activity android:name=".activities.base.CatroidDummy"
+        <activity android:name="com.parrot.freeflight.activities.base.CatroidDummy"
             android:taskAffinity="com.parrot.freeflight.activities.base.CatroidDummy"
             android:label="@string/app_name_dummy">
             <intent-filter>
@@ -48,7 +48,7 @@
         </activity>
         <activity android:excludeFromRecents="true"
             android:finishOnTaskLaunch="true"
-            android:name=".activities.ConnectActivity"
+            android:name="com.parrot.freeflight.activities.ConnectActivity"
             android:noHistory="true"
             android:screenOrientation="landscape" android:stateNotNeeded="true"/>
         <activity
@@ -56,32 +56,32 @@
             android:finishOnTaskLaunch="true"
             android:hardwareAccelerated="true"
             android:launchMode="singleInstance"
-            android:name=".activities.ControlDroneActivity"
+            android:name="com.parrot.freeflight.activities.ControlDroneActivity"
             android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.HudScreen"/>
-        <service android:name=".service.DroneControlService"/>
+        <service android:name="com.parrot.freeflight.service.DroneControlService"/>
         <activity android:finishOnTaskLaunch="true"
             android:hardwareAccelerated="false"
-            android:name=".activities.MediaActivity" android:screenOrientation="landscape"/>
+            android:name="com.parrot.freeflight.activities.MediaActivity" android:screenOrientation="landscape"/>
         <activity android:finishOnTaskLaunch="true"
             android:hardwareAccelerated="false"
             android:launchMode="singleTask"
-            android:name=".activities.DashboardActivity"
+            android:name="com.parrot.freeflight.activities.DashboardActivity"
             android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.Dashboard"/>
         <activity android:finishOnTaskLaunch="true"
             android:launchMode="singleTask"
-            android:name=".activities.UpdateFirmwareActivity"
+            android:name="com.parrot.freeflight.activities.UpdateFirmwareActivity"
             android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.FirmwareUpdateScreen"/>
         <activity android:finishOnTaskLaunch="true"
             android:hardwareAccelerated="true"
-            android:name=".activities.GalleryActivity" android:screenOrientation="landscape"/>
+            android:name="com.parrot.freeflight.activities.GalleryActivity" android:screenOrientation="landscape"/>
         <activity android:finishOnTaskLaunch="true"
             android:hardwareAccelerated="true"
-            android:name=".activities.GuestSpaceActivity" android:screenOrientation="landscape"/>
+            android:name="com.parrot.freeflight.activities.GuestSpaceActivity" android:screenOrientation="landscape"/>
         <activity android:finishOnTaskLaunch="true"
-            android:name=".activities.BrowserActivity"
+            android:name="com.parrot.freeflight.activities.BrowserActivity"
             android:screenOrientation="landscape" android:theme="@style/FreeFlightTheme.BrowserScreen"/>
-        <service android:name=".transcodeservice.TranscodingService"/>
-        <service android:name=".updater.FirmwareUpdateService"/>
+        <service android:name="com.parrot.freeflight.transcodeservice.TranscodingService"/>
+        <service android:name="com.parrot.freeflight.updater.FirmwareUpdateService"/>
         <uses-library android:name="com.sony.btv.remotesensor" android:required="false"/>
         <uses-library android:name="com.google.android.tv" android:required="false"/>
     </application>

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.parrot.freeflight.R;
+import com.parrot.freeflight.catroid.R;
 
 public class ImageStickView
         extends ViewGroup

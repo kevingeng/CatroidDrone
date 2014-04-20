@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 
-import com.parrot.freeflight.R;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.tasks.LoadMediaThumbTask;
 import com.parrot.freeflight.vo.MediaVO;
 

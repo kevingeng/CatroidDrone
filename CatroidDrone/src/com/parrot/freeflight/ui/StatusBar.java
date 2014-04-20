@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parrot.freeflight.R;
+import com.parrot.freeflight.catroid.R;
 
 public final class StatusBar
 {
