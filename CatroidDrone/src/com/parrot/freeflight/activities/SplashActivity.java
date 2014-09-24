@@ -26,8 +26,8 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.VideoView;
 
-import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.base.ParrotActivity;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.utils.DeviceCapabilitiesUtils;
 
 public class SplashActivity

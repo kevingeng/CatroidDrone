@@ -27,8 +27,8 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
-import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.base.ParrotActivity;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.ui.ActionBar;
 import com.parrot.freeflight.ui.StatusBar;
 import com.parrot.freeflight.ui.adapters.InfosAdapter;

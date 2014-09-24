@@ -20,8 +20,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.base.ParrotActivity;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
 import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;
 import com.parrot.freeflight.receivers.DroneReadyReceiver;

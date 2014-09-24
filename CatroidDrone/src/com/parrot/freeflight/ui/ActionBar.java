@@ -13,8 +13,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.DashboardActivity;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.utils.AnimationUtils;
 
 public class ActionBar implements OnClickListener

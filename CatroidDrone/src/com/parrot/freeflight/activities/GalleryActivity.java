@@ -3,8 +3,6 @@ package com.parrot.freeflight.activities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -24,8 +22,8 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.VideoView;
 
-import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.base.ParrotActivity;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.drone.DroneProxy.EVideoRecorderCapability;
 import com.parrot.freeflight.tasks.GetMediaObjectsListTask;
 import com.parrot.freeflight.tasks.GetMediaObjectsListTask.MediaFilter;

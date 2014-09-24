@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.base.ParrotActivity;
+import com.parrot.freeflight.catroid.R;
 
 public class BrowserActivity extends ParrotActivity implements OnClickListener
 {

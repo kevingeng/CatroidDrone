@@ -25,8 +25,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.activities.base.ParrotActivity;
+import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.receivers.MediaReadyDelegate;
 import com.parrot.freeflight.receivers.MediaReadyReceiver;
 import com.parrot.freeflight.receivers.MediaStorageReceiver;
