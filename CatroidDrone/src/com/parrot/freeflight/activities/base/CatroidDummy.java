@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.catroid.R.id;
+import com.parrot.freeflight.catroid.VideoActivity;
 import com.parrot.freeflight.drone.DroneProxy.ARDRONE_LED_ANIMATION;
 import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
 import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;
@@ -64,6 +65,7 @@ public class CatroidDummy extends Activity implements
 	private Button btnTurnLeft;
 	private Button btnTurnRight;
 	private Button btnLEDAnimation;
+	private Button btnShowVideo;
 	private SeekBar powerBar;
 	private TextView tvSpeeed;
 
@@ -344,14 +346,13 @@ public class CatroidDummy extends Activity implements
 		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
 		droneFlyingStateReceiver = new DroneFlyingStateReceiver(this);
 
-		// onConnectPressed();
-
-		// droneFlyingStateReceiver = new
-		// DroneFlyingStateReceiverDelegate(this);
-
-		// disable buttons until we there is no connection
 		enableButtons(false);
 
+	}
+
+	public void showVideoActivity(View view) {
+		Intent intent = new Intent(this, VideoActivity.class);
+		startActivity(intent);
 	}
 
 	public float getConvertedValue(int intVal) {
