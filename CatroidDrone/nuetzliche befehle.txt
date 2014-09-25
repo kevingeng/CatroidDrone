@@ -1,0 +1,17 @@
+Eclipse Shortcuts:
+==================================================
+
+STRG + SHIFT + R --> nach bestimmter Datei suchen
+STRG + J --> inkrementielle Suche
+Ctrl + Shift + F --> format source code
+Ctrl + D --> Deletes line
+Ctrl + Shift + DEL --> Delete until end of line
+Alt + Shift + R  --> Rename
+Ctrl + 1 --> Quickfix
+Ctrl + Q --> Goes to the last edited position 
+Ctrl + Shift + O --> auto import function
+
+Debugging:
+==================================================
+
+adb shell dumpsys activity | grep freeflight
