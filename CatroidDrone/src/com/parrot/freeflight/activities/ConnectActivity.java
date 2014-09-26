@@ -1,4 +1,3 @@
-
 package com.parrot.freeflight.activities;
 
 import java.util.Random;
@@ -29,183 +28,147 @@ import com.parrot.freeflight.receivers.DroneReadyReceiverDelegate;
 import com.parrot.freeflight.service.DroneControlService;
 import com.parrot.freeflight.utils.SystemUtils;
 
-public class ConnectActivity
-        extends ParrotActivity
-        implements ServiceConnection, DroneReadyReceiverDelegate, DroneConnectionChangeReceiverDelegate
-{
+public class ConnectActivity extends ParrotActivity implements ServiceConnection, DroneReadyReceiverDelegate,
+		DroneConnectionChangeReceiverDelegate {
 
-    private static final int[] TIPS = {
-            R.layout.hint_screen_joypad_mode, R.layout.hint_screen_absolute_control, R.layout.hint_screen_record,
-            R.layout.hint_screen_usb, R.layout.hint_screen_switch,
-            R.layout.hint_screen_landing, R.layout.hint_screen_take_off, R.layout.hint_screen_emergency,
-            R.layout.hint_screen_altitude, R.layout.hint_screen_hovering,
-            // R.layout.hint_screen_geolocation,
-            R.layout.hint_screen_share, R.layout.hint_screen_flip
-    };
+	private static final int[] TIPS = { R.layout.hint_screen_joypad_mode, R.layout.hint_screen_absolute_control,
+			R.layout.hint_screen_record, R.layout.hint_screen_usb, R.layout.hint_screen_switch,
+			R.layout.hint_screen_landing, R.layout.hint_screen_take_off, R.layout.hint_screen_emergency,
+			R.layout.hint_screen_altitude, R.layout.hint_screen_hovering,
+			// R.layout.hint_screen_geolocation,
+			R.layout.hint_screen_share, R.layout.hint_screen_flip };
 
-    private static final String TAG = ConnectActivity.class.getSimpleName();
+	private static final String TAG = ConnectActivity.class.getSimpleName();
 
-    private DroneControlService mService;
-    private String AUTO_SKIPP_KEY = "auto_skip";
+	private DroneControlService mService;
+	private String AUTO_SKIPP_KEY = "auto_skip";
 
-    private BroadcastReceiver droneReadyReceiver;
-    private BroadcastReceiver droneConnectionChangeReceiver;
+	private BroadcastReceiver droneReadyReceiver;
+	private BroadcastReceiver droneConnectionChangeReceiver;
 
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
+		Random random = new Random(System.currentTimeMillis());
+		int tipNumber = random.nextInt(TIPS.length);
 
-        Random random = new Random(System.currentTimeMillis());
-        int tipNumber = random.nextInt(TIPS.length);
-     
-        if (!SystemUtils.isGoogleTV(this)) {
-            setContentView(TIPS[tipNumber]);
-        } else {
-            setContentView(R.layout.remote_instructions);
-            prepareGoogleTVControls();
-        }
+		if (!SystemUtils.isGoogleTV(this)) {
+			setContentView(TIPS[tipNumber]);
+		} else {
+			setContentView(R.layout.remote_instructions);
+			prepareGoogleTVControls();
+		}
 
-        droneReadyReceiver = new DroneReadyReceiver(this);
-        droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
+		droneReadyReceiver = new DroneReadyReceiver(this);
+		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
 
-        bindService(new Intent(this, DroneControlService.class), this, Context.BIND_AUTO_CREATE);
+		bindService(new Intent(this, DroneControlService.class), this, Context.BIND_AUTO_CREATE);
 
-    }
+	}
 
+	private void prepareGoogleTVControls() {
+		this.findViewById(R.id.loading_view).setVisibility(View.VISIBLE);
+		final View skipButton = this.findViewById(R.id.skip_button);
+		skipButton.setVisibility(View.GONE);
+		this.findViewById(R.id.skip_button).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onOpenHudScreen();
+			}
+		});
 
-    private void prepareGoogleTVControls()
-    {
-        this.findViewById(R.id.loading_view).setVisibility(View.VISIBLE);
-        final View skipButton = this.findViewById(R.id.skip_button);
-        skipButton.setVisibility(View.GONE);
-        this.findViewById(R.id.skip_button).setOnClickListener(new OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                onOpenHudScreen();
-            }
-        });
+		final CheckBox autoSkipCheck = (CheckBox) this.findViewById(R.id.auto_skip);
+		autoSkipCheck.setChecked(getAutoSkip());
+		autoSkipCheck.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				ConnectActivity.this.setAutoSkip(isChecked);
+			}
+		});
+	}
 
-        final CheckBox autoSkipCheck = (CheckBox) this.findViewById(R.id.auto_skip);
-        autoSkipCheck.setChecked(getAutoSkip());
-        autoSkipCheck.setOnCheckedChangeListener(new OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
-                ConnectActivity.this.setAutoSkip(isChecked);
-            }
-        });
-    }
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 
+		unbindService(this);
+		Log.d(TAG, "Connect activity destroyed");
+	}
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
+	@Override
+	protected void onPause() {
+		super.onPause();
 
-        unbindService(this);
-        Log.d(TAG, "Connect activity destroyed");
-    }
+		if (mService != null) {
+			mService.pause();
+		}
 
+		LocalBroadcastManager manager = LocalBroadcastManager.getInstance(getApplicationContext());
+		manager.unregisterReceiver(droneReadyReceiver);
+		manager.unregisterReceiver(droneConnectionChangeReceiver);
+	}
 
-    @Override
-    protected void onPause()
-    {
-        super.onPause();
+	@Override
+	protected void onResume() {
+		super.onResume();
 
-        if (mService != null) {
-            mService.pause();
-        }
+		if (mService != null)
+			mService.resume();
 
-        LocalBroadcastManager manager = LocalBroadcastManager.getInstance(getApplicationContext());
-        manager.unregisterReceiver(droneReadyReceiver);
-        manager.unregisterReceiver(droneConnectionChangeReceiver);
-    }
+		LocalBroadcastManager manager = LocalBroadcastManager.getInstance(getApplicationContext());
+		manager.registerReceiver(droneReadyReceiver, new IntentFilter(DroneControlService.DRONE_STATE_READY_ACTION));
+		manager.registerReceiver(droneConnectionChangeReceiver, new IntentFilter(
+				DroneControlService.DRONE_CONNECTION_CHANGED_ACTION));
+	}
 
+	public void onServiceConnected(ComponentName name, IBinder service) {
+		mService = ((DroneControlService.LocalBinder) service).getService();
 
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
+		mService.resume();
+		mService.requestDroneStatus();
+	}
 
-        if (mService != null)
-            mService.resume();
+	private void onOpenHudScreen() {
+		Intent droneControlActivity = new Intent(ConnectActivity.this, ControlDroneActivity.class);
+		droneControlActivity.putExtra("USE_SOFTWARE_RENDERING", false);
+		droneControlActivity.putExtra("FORCE_COMBINED_CONTROL_MODE", false);
+		startActivity(droneControlActivity);
+	}
 
-        LocalBroadcastManager manager = LocalBroadcastManager.getInstance(getApplicationContext());
-        manager.registerReceiver(droneReadyReceiver, new IntentFilter(DroneControlService.DRONE_STATE_READY_ACTION));
-        manager.registerReceiver(droneConnectionChangeReceiver, new IntentFilter(
-                DroneControlService.DRONE_CONNECTION_CHANGED_ACTION));
-    }
+	public void onDroneConnected() {
+		// We still waiting for onDroneReady event
+		mService.requestConfigUpdate();
+	}
 
+	public void onDroneReady() {
+		if (!SystemUtils.isGoogleTV(this)) {
+			onOpenHudScreen();
+		} else {
+			final CheckBox autoSkip = (CheckBox) this.findViewById(R.id.auto_skip);
 
-    public void onServiceConnected(ComponentName name, IBinder service)
-    {
-        mService = ((DroneControlService.LocalBinder) service).getService();
+			if (autoSkip.isChecked()) {
+				onOpenHudScreen();
+			}
 
-        mService.resume();
-        mService.requestDroneStatus();
-    }
+			this.findViewById(R.id.loading_view).setVisibility(View.GONE);
+			this.findViewById(R.id.skip_button).setVisibility(View.VISIBLE);
+		}
+	}
 
+	public void onDroneDisconnected() {
+		// Left unimplemented
+	}
 
-    private void onOpenHudScreen()
-    {
-        Intent droneControlActivity = new Intent(ConnectActivity.this, ControlDroneActivity.class);
-        droneControlActivity.putExtra("USE_SOFTWARE_RENDERING", false);
-        droneControlActivity.putExtra("FORCE_COMBINED_CONTROL_MODE", false);
-        startActivity(droneControlActivity);
-    }
+	public void onServiceDisconnected(ComponentName name) {
+		// Left unimplemented
+	}
 
+	protected void setAutoSkip(boolean theSkip) {
+		PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean(AUTO_SKIPP_KEY, theSkip).commit();
+	}
 
-    public void onDroneConnected()
-    {
-        // We still waiting for onDroneReady event
-        mService.requestConfigUpdate();
-    }
-
-
-    public void onDroneReady()
-    {
-        if (!SystemUtils.isGoogleTV(this)) {
-            onOpenHudScreen();
-        } else {
-            final CheckBox autoSkip = (CheckBox) this.findViewById(R.id.auto_skip);
-            
-            if (autoSkip.isChecked()) {
-                onOpenHudScreen();
-            }
-            
-            this.findViewById(R.id.loading_view).setVisibility(View.GONE);
-            this.findViewById(R.id.skip_button).setVisibility(View.VISIBLE);
-        }
-    }
-
-
-    public void onDroneDisconnected()
-    {
-        // Left unimplemented
-    }
-
-
-    public void onServiceDisconnected(ComponentName name)
-    {
-        // Left unimplemented
-    }
-
-
-    protected void setAutoSkip(boolean theSkip)
-    {
-        PreferenceManager.getDefaultSharedPreferences(this).edit()
-                .putBoolean(AUTO_SKIPP_KEY, theSkip)
-                .commit();
-    }
-
-
-    protected boolean getAutoSkip()
-    {
-        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean(AUTO_SKIPP_KEY, false);
-    }
+	protected boolean getAutoSkip() {
+		return PreferenceManager.getDefaultSharedPreferences(this).getBoolean(AUTO_SKIPP_KEY, false);
+	}
 }

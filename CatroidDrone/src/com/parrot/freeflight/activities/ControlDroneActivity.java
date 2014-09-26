@@ -82,13 +82,10 @@ import com.parrot.freeflight.utils.NookUtils;
 import com.parrot.freeflight.utils.SystemUtils;
 
 @SuppressLint("NewApi")
-public class ControlDroneActivity extends ParrotActivity implements
-		DeviceOrientationChangeDelegate, WifiSignalStrengthReceiverDelegate,
-		DroneVideoRecordStateReceiverDelegate,
-		DroneEmergencyChangeReceiverDelegate,
-		DroneBatteryChangedReceiverDelegate, DroneFlyingStateReceiverDelegate,
-		DroneCameraReadyActionReceiverDelegate,
-		DroneRecordReadyActionReceiverDelegate, SettingsDialogDelegate {
+public class ControlDroneActivity extends ParrotActivity implements DeviceOrientationChangeDelegate,
+		WifiSignalStrengthReceiverDelegate, DroneVideoRecordStateReceiverDelegate,
+		DroneEmergencyChangeReceiverDelegate, DroneBatteryChangedReceiverDelegate, DroneFlyingStateReceiverDelegate,
+		DroneCameraReadyActionReceiverDelegate, DroneRecordReadyActionReceiverDelegate, SettingsDialogDelegate {
 	private static final int LOW_DISK_SPACE_BYTES_LEFT = 1048576 * 20; // 20
 																		// mebabytes
 	private static final int WARNING_MESSAGE_DISMISS_TIME = 5000; // 5 seconds
@@ -152,8 +149,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 	private ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceConnected(ComponentName name, IBinder service) {
-			droneControlService = ((DroneControlService.LocalBinder) service)
-					.getService();
+			droneControlService = ((DroneControlService.LocalBinder) service).getService();
 			onDroneServiceConnected();
 		}
 
@@ -177,19 +173,15 @@ public class ControlDroneActivity extends ParrotActivity implements
 		// TODO google TV requires specific sensor manager and device rotation
 		if (this.isGoogleTV) {
 			this.applyHandDependendTVControllers();
-			deviceOrientationManager = new DeviceOrientationManager(
-					new RemoteSensorManagerWrapper(this), this);
+			deviceOrientationManager = new DeviceOrientationManager(new RemoteSensorManagerWrapper(this), this);
 		} else {
-			screenRotationIndex = getWindow().getWindowManager()
-					.getDefaultDisplay().getRotation();
-			deviceOrientationManager = new DeviceOrientationManager(
-					new DeviceSensorManagerWrapper(this), this);
+			screenRotationIndex = getWindow().getWindowManager().getDefaultDisplay().getRotation();
+			deviceOrientationManager = new DeviceOrientationManager(new DeviceSensorManagerWrapper(this), this);
 		}
 
 		deviceOrientationManager.onCreate();
 
-		bindService(new Intent(this, DroneControlService.class), mConnection,
-				Context.BIND_AUTO_CREATE);
+		bindService(new Intent(this, DroneControlService.class), mConnection, Context.BIND_AUTO_CREATE);
 
 		Bundle bundle = getIntent().getExtras();
 
@@ -202,8 +194,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			// forceCombinedControlMode = false;
 		}
 
-		pauseVideoWhenOnSettings = getResources().getBoolean(
-				R.bool.settings_pause_video_when_opened);
+		pauseVideoWhenOnSettings = getResources().getBoolean(R.bool.settings_pause_video_when_opened);
 
 		combinedYawEnabled = true;
 		acceleroEnabled = false;
@@ -216,10 +207,8 @@ public class ControlDroneActivity extends ParrotActivity implements
 		droneEmergencyReceiver = new DroneEmergencyChangeReceiver(this);
 		droneBatteryReceiver = new DroneBatteryChangedReceiver(this);
 		droneFlyingStateReceiver = new DroneFlyingStateReceiver(this);
-		droneCameraReadyChangedReceiver = new DroneCameraReadyChangeReceiver(
-				this);
-		droneRecordReadyChangeReceiver = new DroneRecordReadyChangeReceiver(
-				this);
+		droneCameraReadyChangedReceiver = new DroneCameraReadyChangeReceiver(this);
+		droneRecordReadyChangeReceiver = new DroneRecordReadyChangeReceiver(this);
 
 		soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 		batterySoundId = soundPool.load(this, R.raw.battery, 1);
@@ -238,12 +227,10 @@ public class ControlDroneActivity extends ParrotActivity implements
 	private void applyHandDependendTVControllers() {
 		if (settings.isLeftHanded()) {
 			screenRotationIndex = Surface.ROTATION_90;
-			initGoogleTVControllers(ControlButtonsFactory
-					.getLeftHandedControls());
+			initGoogleTVControllers(ControlButtonsFactory.getLeftHandedControls());
 		} else {
 			screenRotationIndex = Surface.ROTATION_270;
-			initGoogleTVControllers(ControlButtonsFactory
-					.getRightHandedControls());
+			initGoogleTVControllers(ControlButtonsFactory.getRightHandedControls());
 		}
 	}
 
@@ -251,8 +238,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 		rollPitchListener = new JoystickListener() {
 
 			public void onChanged(JoystickBase joy, float x, float y) {
-				if (droneControlService != null && acceleroEnabled == false
-						&& running == true) {
+				if (droneControlService != null && acceleroEnabled == false && running == true) {
 					droneControlService.setRoll(x);
 					droneControlService.setPitch(-y);
 				}
@@ -266,11 +252,9 @@ public class ControlDroneActivity extends ParrotActivity implements
 					droneControlService.setProgressiveCommandEnabled(true);
 
 					if (combinedYawEnabled && rightJoyPressed) {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(true);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(true);
 					} else {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(false);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					}
 				}
 
@@ -285,8 +269,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 					droneControlService.setProgressiveCommandEnabled(false);
 
 					if (combinedYawEnabled) {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(false);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					}
 				}
 
@@ -309,11 +292,9 @@ public class ControlDroneActivity extends ParrotActivity implements
 
 				if (droneControlService != null) {
 					if (combinedYawEnabled && leftJoyPressed) {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(true);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(true);
 					} else {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(false);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					}
 				}
 			}
@@ -323,8 +304,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 				rightJoyPressed = false;
 
 				if (droneControlService != null && combinedYawEnabled) {
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(false);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 				}
 			}
 		};
@@ -333,8 +313,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 	private void initGoogleTVControllers(final ControlButtons buttons) {
 
 		this.buttonControllers = new LinkedList<ButtonController>();
-		this.buttonControllers.add(new ButtonValueController(buttons
-				.getButtonCode(ControlButtons.BUTTON_UP), buttons
+		this.buttonControllers.add(new ButtonValueController(buttons.getButtonCode(ControlButtons.BUTTON_UP), buttons
 				.getButtonCode(ControlButtons.BUTTON_DOWN)) {
 
 			@Override
@@ -345,9 +324,8 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonValueController(buttons
-				.getButtonCode(ControlButtons.BUTTON_TURN_RIGHT), buttons
-				.getButtonCode(ControlButtons.BUTTON_TURN_LEFT)) {
+		this.buttonControllers.add(new ButtonValueController(buttons.getButtonCode(ControlButtons.BUTTON_TURN_RIGHT),
+				buttons.getButtonCode(ControlButtons.BUTTON_TURN_LEFT)) {
 			@Override
 			public void onValueChanged(float theCurrentValue) {
 				if (droneControlService != null) {
@@ -356,25 +334,21 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonValueController(buttons
-				.getButtonCode(ControlButtons.BUTTON_PITCH_LEFT), buttons
-				.getButtonCode(ControlButtons.BUTTON_PITCH_RIGHT)) {
+		this.buttonControllers.add(new ButtonValueController(buttons.getButtonCode(ControlButtons.BUTTON_PITCH_LEFT),
+				buttons.getButtonCode(ControlButtons.BUTTON_PITCH_RIGHT)) {
 			@Override
 			public void onValueChanged(float theCurrentValue) {
-				if (droneControlService != null && acceleroEnabled == false
-						&& running) {
+				if (droneControlService != null && acceleroEnabled == false && running) {
 					droneControlService.setPitch(theCurrentValue);
 				}
 			}
 		});
 
-		this.buttonControllers.add(new ButtonValueController(buttons
-				.getButtonCode(ControlButtons.BUTTON_ROLL_FORWARD), buttons
-				.getButtonCode(ControlButtons.BUTTON_ROLL_BACKWARD)) {
+		this.buttonControllers.add(new ButtonValueController(buttons.getButtonCode(ControlButtons.BUTTON_ROLL_FORWARD),
+				buttons.getButtonCode(ControlButtons.BUTTON_ROLL_BACKWARD)) {
 			@Override
 			public void onValueChanged(float theCurrentValue) {
-				if (droneControlService != null && acceleroEnabled == false
-						&& running) {
+				if (droneControlService != null && acceleroEnabled == false && running) {
 					droneControlService.setPitch(-theCurrentValue);
 				}
 			}
@@ -391,8 +365,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 					droneControlService.setProgressiveCommandEnabled(false);
 
 					if (combinedYawEnabled) {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(false);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					}
 				}
 
@@ -407,11 +380,9 @@ public class ControlDroneActivity extends ParrotActivity implements
 					droneControlService.setProgressiveCommandEnabled(true);
 
 					if (combinedYawEnabled && rightJoyPressed) {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(true);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(true);
 					} else {
-						droneControlService
-								.setProgressiveCommandCombinedYawEnabled(false);
+						droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					}
 				}
 
@@ -419,8 +390,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonDoubleClickController(buttons
-				.getButtonCode(ControlButtons.BUTTON_SALTO)) {
+		this.buttonControllers.add(new ButtonDoubleClickController(buttons.getButtonCode(ControlButtons.BUTTON_SALTO)) {
 
 			@Override
 			public void onButtonDoubleClicked() {
@@ -430,8 +400,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonPressedController(buttons
-				.getButtonCode(ControlButtons.BUTTON_TAKE_OFF)) {
+		this.buttonControllers.add(new ButtonPressedController(buttons.getButtonCode(ControlButtons.BUTTON_TAKE_OFF)) {
 
 			@Override
 			public void onButtonReleased() {
@@ -443,8 +412,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonPressedController(buttons
-				.getButtonCode(ControlButtons.BUTTON_EMERGENCY)) {
+		this.buttonControllers.add(new ButtonPressedController(buttons.getButtonCode(ControlButtons.BUTTON_EMERGENCY)) {
 
 			@Override
 			public void onButtonReleased() {
@@ -456,8 +424,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonPressedController(buttons
-				.getButtonCode(ControlButtons.BUTTON_CAMERA)) {
+		this.buttonControllers.add(new ButtonPressedController(buttons.getButtonCode(ControlButtons.BUTTON_CAMERA)) {
 
 			@Override
 			public void onButtonReleased() {
@@ -469,8 +436,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonPressedController(buttons
-				.getButtonCode(ControlButtons.BUTTON_SETTINGS)) {
+		this.buttonControllers.add(new ButtonPressedController(buttons.getButtonCode(ControlButtons.BUTTON_SETTINGS)) {
 
 			@Override
 			public void onButtonReleased() {
@@ -482,8 +448,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonPressedController(buttons
-				.getButtonCode(ControlButtons.BUTTON_PHOTO)) {
+		this.buttonControllers.add(new ButtonPressedController(buttons.getButtonCode(ControlButtons.BUTTON_PHOTO)) {
 
 			@Override
 			public void onButtonReleased() {
@@ -495,8 +460,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 			}
 		});
 
-		this.buttonControllers.add(new ButtonPressedController(buttons
-				.getButtonCode(ControlButtons.BUTTON_RECORD)) {
+		this.buttonControllers.add(new ButtonPressedController(buttons.getButtonCode(ControlButtons.BUTTON_RECORD)) {
 
 			@Override
 			public void onButtonReleased() {
@@ -617,33 +581,26 @@ public class ControlDroneActivity extends ParrotActivity implements
 		});
 	}
 
-	private void initVirtualJoysticks(JoystickType leftType,
-			JoystickType rightType, boolean isLeftHanded) {
-		JoystickBase joystickLeft = (!isLeftHanded ? view.getJoystickLeft()
-				: view.getJoystickRight());
-		JoystickBase joystickRight = (!isLeftHanded ? view.getJoystickRight()
-				: view.getJoystickLeft());
+	private void initVirtualJoysticks(JoystickType leftType, JoystickType rightType, boolean isLeftHanded) {
+		JoystickBase joystickLeft = (!isLeftHanded ? view.getJoystickLeft() : view.getJoystickRight());
+		JoystickBase joystickRight = (!isLeftHanded ? view.getJoystickRight() : view.getJoystickLeft());
 
 		ApplicationSettings settings = getSettings();
 
 		if (leftType == JoystickType.ANALOGUE) {
-			if (joystickLeft == null
-					|| !(joystickLeft instanceof AnalogueJoystick)
-					|| joystickLeft.isAbsoluteControl() != settings
-							.isAbsoluteControlEnabled()) {
-				joystickLeft = JoystickFactory.createAnalogueJoystick(this,
-						settings.isAbsoluteControlEnabled(), rollPitchListener);
+			if (joystickLeft == null || !(joystickLeft instanceof AnalogueJoystick)
+					|| joystickLeft.isAbsoluteControl() != settings.isAbsoluteControlEnabled()) {
+				joystickLeft = JoystickFactory.createAnalogueJoystick(this, settings.isAbsoluteControlEnabled(),
+						rollPitchListener);
 			} else {
 				joystickLeft.setOnAnalogueChangedListener(rollPitchListener);
 				joystickRight.setAbsolute(settings.isAbsoluteControlEnabled());
 			}
 		} else if (leftType == JoystickType.ACCELERO) {
-			if (joystickLeft == null
-					|| !(joystickLeft instanceof AcceleroJoystick)
-					|| joystickLeft.isAbsoluteControl() != settings
-							.isAbsoluteControlEnabled()) {
-				joystickLeft = JoystickFactory.createAcceleroJoystick(this,
-						settings.isAbsoluteControlEnabled(), rollPitchListener);
+			if (joystickLeft == null || !(joystickLeft instanceof AcceleroJoystick)
+					|| joystickLeft.isAbsoluteControl() != settings.isAbsoluteControlEnabled()) {
+				joystickLeft = JoystickFactory.createAcceleroJoystick(this, settings.isAbsoluteControlEnabled(),
+						rollPitchListener);
 			} else {
 				joystickLeft.setOnAnalogueChangedListener(rollPitchListener);
 				joystickRight.setAbsolute(settings.isAbsoluteControlEnabled());
@@ -651,23 +608,17 @@ public class ControlDroneActivity extends ParrotActivity implements
 		}
 
 		if (rightType == JoystickType.ANALOGUE) {
-			if (joystickRight == null
-					|| !(joystickRight instanceof AnalogueJoystick)
-					|| joystickRight.isAbsoluteControl() != settings
-							.isAbsoluteControlEnabled()) {
-				joystickRight = JoystickFactory.createAnalogueJoystick(this,
-						false, gazYawListener);
+			if (joystickRight == null || !(joystickRight instanceof AnalogueJoystick)
+					|| joystickRight.isAbsoluteControl() != settings.isAbsoluteControlEnabled()) {
+				joystickRight = JoystickFactory.createAnalogueJoystick(this, false, gazYawListener);
 			} else {
 				joystickRight.setOnAnalogueChangedListener(gazYawListener);
 				joystickRight.setAbsolute(false);
 			}
 		} else if (rightType == JoystickType.ACCELERO) {
-			if (joystickRight == null
-					|| !(joystickRight instanceof AcceleroJoystick)
-					|| joystickRight.isAbsoluteControl() != settings
-							.isAbsoluteControlEnabled()) {
-				joystickRight = JoystickFactory.createAcceleroJoystick(this,
-						false, gazYawListener);
+			if (joystickRight == null || !(joystickRight instanceof AcceleroJoystick)
+					|| joystickRight.isAbsoluteControl() != settings.isAbsoluteControlEnabled()) {
+				joystickRight = JoystickFactory.createAcceleroJoystick(this, false, gazYawListener);
 			} else {
 				joystickRight.setOnAnalogueChangedListener(gazYawListener);
 				joystickRight.setAbsolute(false);
@@ -701,34 +652,22 @@ public class ControlDroneActivity extends ParrotActivity implements
 
 	private void registerReceivers() {
 		// System wide receiver
-		registerReceiver(wifiSignalReceiver, new IntentFilter(
-				WifiManager.RSSI_CHANGED_ACTION));
+		registerReceiver(wifiSignalReceiver, new IntentFilter(WifiManager.RSSI_CHANGED_ACTION));
 
 		// Local receivers
-		LocalBroadcastManager localBroadcastMgr = LocalBroadcastManager
-				.getInstance(getApplicationContext());
-		localBroadcastMgr
-				.registerReceiver(
-						videoRecordingStateReceiver,
-						new IntentFilter(
-								DroneControlService.VIDEO_RECORDING_STATE_CHANGED_ACTION));
-		localBroadcastMgr
-				.registerReceiver(
-						droneEmergencyReceiver,
-						new IntentFilter(
-								DroneControlService.DRONE_EMERGENCY_STATE_CHANGED_ACTION));
-		localBroadcastMgr.registerReceiver(droneBatteryReceiver,
-				new IntentFilter(
-						DroneControlService.DRONE_BATTERY_CHANGED_ACTION));
-		localBroadcastMgr.registerReceiver(droneFlyingStateReceiver,
-				new IntentFilter(
-						DroneControlService.DRONE_FLYING_STATE_CHANGED_ACTION));
-		localBroadcastMgr.registerReceiver(droneCameraReadyChangedReceiver,
-				new IntentFilter(
-						DroneControlService.CAMERA_READY_CHANGED_ACTION));
-		localBroadcastMgr.registerReceiver(droneRecordReadyChangeReceiver,
-				new IntentFilter(
-						DroneControlService.RECORD_READY_CHANGED_ACTION));
+		LocalBroadcastManager localBroadcastMgr = LocalBroadcastManager.getInstance(getApplicationContext());
+		localBroadcastMgr.registerReceiver(videoRecordingStateReceiver, new IntentFilter(
+				DroneControlService.VIDEO_RECORDING_STATE_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneEmergencyReceiver, new IntentFilter(
+				DroneControlService.DRONE_EMERGENCY_STATE_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneBatteryReceiver, new IntentFilter(
+				DroneControlService.DRONE_BATTERY_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneFlyingStateReceiver, new IntentFilter(
+				DroneControlService.DRONE_FLYING_STATE_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneCameraReadyChangedReceiver, new IntentFilter(
+				DroneControlService.CAMERA_READY_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneRecordReadyChangeReceiver, new IntentFilter(
+				DroneControlService.RECORD_READY_CHANGED_ACTION));
 	}
 
 	private void unregisterReceivers() {
@@ -736,8 +675,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 		unregisterReceiver(wifiSignalReceiver);
 
 		// Unregistering local receivers
-		LocalBroadcastManager localBroadcastMgr = LocalBroadcastManager
-				.getInstance(getApplicationContext());
+		LocalBroadcastManager localBroadcastMgr = LocalBroadcastManager.getInstance(getApplicationContext());
 		localBroadcastMgr.unregisterReceiver(videoRecordingStateReceiver);
 		localBroadcastMgr.unregisterReceiver(droneEmergencyReceiver);
 		localBroadcastMgr.unregisterReceiver(droneBatteryReceiver);
@@ -795,12 +733,10 @@ public class ControlDroneActivity extends ParrotActivity implements
 			droneControlService.resume();
 			droneControlService.requestDroneStatus();
 		} else {
-			Log.w(TAG,
-					"DroneServiceConnected event ignored as DroneControlService is null");
+			Log.w(TAG, "DroneServiceConnected event ignored as DroneControlService is null");
 		}
 
-		settingsDialog = new SettingsDialog(this, this, droneControlService,
-				magnetoAvailable);
+		settingsDialog = new SettingsDialog(this, this, droneControlService, magnetoAvailable);
 
 		applySettings(settings);
 
@@ -831,20 +767,15 @@ public class ControlDroneActivity extends ParrotActivity implements
 	}
 
 	protected void onNotifyLowDiskSpace() {
-		showWarningDialog(getString(R.string.your_device_is_low_on_disk_space),
-				WARNING_MESSAGE_DISMISS_TIME);
+		showWarningDialog(getString(R.string.your_device_is_low_on_disk_space), WARNING_MESSAGE_DISMISS_TIME);
 	}
 
 	protected void onNotifyLowUsbSpace() {
-		showWarningDialog(
-				getString(R.string.USB_drive_full_Please_connect_a_new_one),
-				WARNING_MESSAGE_DISMISS_TIME);
+		showWarningDialog(getString(R.string.USB_drive_full_Please_connect_a_new_one), WARNING_MESSAGE_DISMISS_TIME);
 	}
 
 	protected void onNotifyNoMediaStorageAvailable() {
-		showWarningDialog(
-				getString(R.string.Please_insert_a_SD_card_in_your_Smartphone),
-				WARNING_MESSAGE_DISMISS_TIME);
+		showWarningDialog(getString(R.string.Please_insert_a_SD_card_in_your_Smartphone), WARNING_MESSAGE_DISMISS_TIME);
 	}
 
 	public void onCameraReadyChanged(boolean ready) {
@@ -857,8 +788,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 	public void onDroneEmergencyChanged(int code) {
 		view.setEmergency(code);
 
-		if (code == NavData.ERROR_STATE_EMERGENCY_VBAT_LOW
-				|| code == NavData.ERROR_STATE_ALERT_VBAT_LOW) {
+		if (code == NavData.ERROR_STATE_EMERGENCY_VBAT_LOW || code == NavData.ERROR_STATE_ALERT_VBAT_LOW) {
 			playEmergencySound();
 		} else {
 			stopEmergencySound();
@@ -889,8 +819,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 		view.setWifiValue(strength);
 	}
 
-	public void onDroneRecordVideoStateChanged(boolean recording,
-			boolean usbActive, int remaining) {
+	public void onDroneRecordVideoStateChanged(boolean recording, boolean usbActive, int remaining) {
 		if (droneControlService == null)
 			return;
 
@@ -904,20 +833,16 @@ public class ControlDroneActivity extends ParrotActivity implements
 		updateBackButtonState();
 
 		if (!recording) {
-			if (prevRecording != recording
-					&& droneControlService != null
+			if (prevRecording != recording && droneControlService != null
 					&& droneControlService.getDroneVersion() == EDroneVersion.DRONE_1) {
 				runTranscoding();
-				showWarningDialog(
-						getString(R.string.Your_video_is_being_processed_Please_do_not_close_application),
+				showWarningDialog(getString(R.string.Your_video_is_being_processed_Please_do_not_close_application),
 						WARNING_MESSAGE_DISMISS_TIME);
 			}
 		}
 
 		if (prevRecording != recording) {
-			if (usbActive
-					&& droneControlService.getDroneConfig().isRecordOnUsb()
-					&& remaining == 0) {
+			if (usbActive && droneControlService.getDroneConfig().isRecordOnUsb() && remaining == 0) {
 				onNotifyLowUsbSpace();
 			}
 		}
@@ -927,8 +852,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 		view.setSettingsButtonEnabled(false);
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		Fragment prev = getSupportFragmentManager().findFragmentByTag(
-				"settings");
+		Fragment prev = getSupportFragmentManager().findFragmentByTag("settings");
 
 		if (prev != null) {
 			return;
@@ -957,18 +881,15 @@ public class ControlDroneActivity extends ParrotActivity implements
 	private void applyJoypadConfig(ControlMode controlMode, boolean isLeftHanded) {
 		switch (controlMode) {
 		case NORMAL_MODE:
-			initVirtualJoysticks(JoystickType.ANALOGUE, JoystickType.ANALOGUE,
-					isLeftHanded);
+			initVirtualJoysticks(JoystickType.ANALOGUE, JoystickType.ANALOGUE, isLeftHanded);
 			acceleroEnabled = false;
 			break;
 		case ACCELERO_MODE:
-			initVirtualJoysticks(JoystickType.ACCELERO, JoystickType.ANALOGUE,
-					isLeftHanded);
+			initVirtualJoysticks(JoystickType.ACCELERO, JoystickType.ANALOGUE, isLeftHanded);
 			acceleroEnabled = true;
 			break;
 		case ACE_MODE:
-			initVirtualJoysticks(JoystickType.NONE, JoystickType.COMBINED,
-					isLeftHanded);
+			initVirtualJoysticks(JoystickType.NONE, JoystickType.COMBINED, isLeftHanded);
 			acceleroEnabled = true;
 			break;
 		}
@@ -978,14 +899,12 @@ public class ControlDroneActivity extends ParrotActivity implements
 		applySettings(settings, false);
 	}
 
-	private void applySettings(ApplicationSettings settings,
-			boolean skipJoypadConfig) {
+	private void applySettings(ApplicationSettings settings, boolean skipJoypadConfig) {
 		magnetoEnabled = settings.isAbsoluteControlEnabled();
 
 		if (magnetoEnabled) {
 			if (droneControlService.getDroneVersion() == EDroneVersion.DRONE_1
-					|| !deviceOrientationManager.isMagnetoAvailable()
-					|| NookUtils.isNook()) {
+					|| !deviceOrientationManager.isMagnetoAvailable() || NookUtils.isNook()) {
 				// Drone 1 doesn't have compass, so we need to switch magneto
 				// off.
 				magnetoEnabled = false;
@@ -997,13 +916,11 @@ public class ControlDroneActivity extends ParrotActivity implements
 			droneControlService.setMagnetoEnabled(magnetoEnabled);
 
 		if (!skipJoypadConfig) {
-			applyJoypadConfig(settings.getControlMode(),
-					settings.isLeftHanded());
+			applyJoypadConfig(settings.getControlMode(), settings.isLeftHanded());
 		}
 
 		// TODO we have to hide touch controllers for google TV
-		view.setInterfaceOpacity(this.isGoogleTV ? 0 : settings
-				.getInterfaceOpacity());
+		view.setInterfaceOpacity(this.isGoogleTV ? 0 : settings.getInterfaceOpacity());
 	}
 
 	private ApplicationSettings getSettings() {
@@ -1012,8 +929,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 
 	public void refreshWifiSignalStrength() {
 		WifiManager manager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-		int signalStrength = WifiManager.calculateSignalLevel(manager
-				.getConnectionInfo().getRssi(), 4);
+		int signalStrength = WifiManager.calculateSignalLevel(manager.getConnectionInfo().getRssi(), 4);
 		onWifiSignalStrengthChanged(signalStrength);
 	}
 
@@ -1063,10 +979,8 @@ public class ControlDroneActivity extends ParrotActivity implements
 			File mediaDir = droneControlService.getMediaDir();
 
 			if (mediaDir != null) {
-				Intent transcodeIntent = new Intent(this,
-						TranscodingService.class);
-				transcodeIntent.putExtra(TranscodingService.EXTRA_MEDIA_PATH,
-						mediaDir.toString());
+				Intent transcodeIntent = new Intent(this, TranscodingService.class);
+				transcodeIntent.putExtra(TranscodingService.EXTRA_MEDIA_PATH, mediaDir.toString());
 				startService(transcodeIntent);
 			} else {
 				Log.d(TAG, "Transcoding skipped SD card is missing.");
@@ -1074,8 +988,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 		}
 	}
 
-	public void onDeviceOrientationChanged(float[] orientation,
-			float magneticHeading, int magnetoAccuracy) {
+	public void onDeviceOrientationChanged(float[] orientation, float magneticHeading, int magnetoAccuracy) {
 		if (droneControlService == null) {
 			return;
 		}
@@ -1104,15 +1017,13 @@ public class ControlDroneActivity extends ParrotActivity implements
 
 			if (screenRotationIndex == 0) {
 				// Xoom
-				if (acceleroEnabled
-						&& (Math.abs(x) > ACCELERO_TRESHOLD || Math.abs(y) > ACCELERO_TRESHOLD)) {
+				if (acceleroEnabled && (Math.abs(x) > ACCELERO_TRESHOLD || Math.abs(y) > ACCELERO_TRESHOLD)) {
 					x *= -1;
 					droneControlService.setPitch(x);
 					droneControlService.setRoll(y);
 				}
 			} else if (screenRotationIndex == 1) {
-				if (acceleroEnabled
-						&& (Math.abs(x) > ACCELERO_TRESHOLD || Math.abs(y) > ACCELERO_TRESHOLD)) {
+				if (acceleroEnabled && (Math.abs(x) > ACCELERO_TRESHOLD || Math.abs(y) > ACCELERO_TRESHOLD)) {
 					x *= -1;
 					y *= -1;
 
@@ -1121,8 +1032,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 				}
 			} else if (screenRotationIndex == 3) {
 				// google tv
-				if (acceleroEnabled
-						&& (Math.abs(x) > ACCELERO_TRESHOLD || Math.abs(y) > ACCELERO_TRESHOLD)) {
+				if (acceleroEnabled && (Math.abs(x) > ACCELERO_TRESHOLD || Math.abs(y) > ACCELERO_TRESHOLD)) {
 
 					droneControlService.setPitch(y);
 					droneControlService.setRoll(x);
@@ -1132,16 +1042,14 @@ public class ControlDroneActivity extends ParrotActivity implements
 	}
 
 	public void prepareDialog(SettingsDialog dialog) {
-		dialog.setAcceleroAvailable(deviceOrientationManager
-				.isAcceleroAvailable());
+		dialog.setAcceleroAvailable(deviceOrientationManager.isAcceleroAvailable());
 
 		if (NookUtils.isNook()) {
 			// System see the magnetometer but actually it is not functional. So
 			// we need to disable magneto
 			dialog.setMagnetoAvailable(false);
 		} else {
-			dialog.setMagnetoAvailable(deviceOrientationManager
-					.isMagnetoAvailable());
+			dialog.setMagnetoAvailable(deviceOrientationManager.isMagnetoAvailable());
 		}
 
 		dialog.setFlying(flying);
@@ -1150,8 +1058,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 	}
 
 	@Override
-	public void onOptionChangedApp(SettingsDialog dialog,
-			EAppSettingProperty property, Object value) {
+	public void onOptionChangedApp(SettingsDialog dialog, EAppSettingProperty property, Object value) {
 		if (value == null || value == null) {
 			throw new IllegalArgumentException("Property can not be null");
 		}
@@ -1162,8 +1069,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 		case LEFT_HANDED_PROP:
 		case MAGNETO_ENABLED_PROP:
 		case CONTROL_MODE_PROP:
-			applyJoypadConfig(appSettings.getControlMode(),
-					appSettings.isLeftHanded());
+			applyJoypadConfig(appSettings.getControlMode(), appSettings.isLeftHanded());
 			break;
 		case INTERFACE_OPACITY_PROP:
 			if (value instanceof Integer) {
@@ -1225,8 +1131,7 @@ public class ControlDroneActivity extends ParrotActivity implements
 					freeSpace = mediaDir.getUsableSpace();
 				}
 
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
-						&& freeSpace < LOW_DISK_SPACE_BYTES_LEFT) {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD && freeSpace < LOW_DISK_SPACE_BYTES_LEFT) {
 					lowOnSpace = true;
 				}
 			}
@@ -1241,10 +1146,8 @@ public class ControlDroneActivity extends ParrotActivity implements
 		if (droneControlService != null) {
 			DroneConfig droneConfig = droneControlService.getDroneConfig();
 
-			boolean sdCardMounted = droneControlService
-					.isMediaStorageAvailable();
-			boolean recordingToUsb = droneConfig.isRecordOnUsb()
-					&& droneControlService.isUSBInserted();
+			boolean sdCardMounted = droneControlService.isMediaStorageAvailable();
+			boolean recordingToUsb = droneConfig.isRecordOnUsb() && droneControlService.isUSBInserted();
 
 			if (recording) {
 				// Allow to stop recording

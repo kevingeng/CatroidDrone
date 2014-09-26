@@ -28,13 +28,12 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parrot.freeflight.activities.ControlDroneActivity;
 import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.catroid.R.id;
-import com.parrot.freeflight.catroid.VideoActivity;
 import com.parrot.freeflight.drone.DroneProxy.ARDRONE_LED_ANIMATION;
 import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
 import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;
-import com.parrot.freeflight.receivers.DroneFlyingStateReceiver;
 import com.parrot.freeflight.receivers.DroneFlyingStateReceiverDelegate;
 import com.parrot.freeflight.receivers.DroneReadyReceiver;
 import com.parrot.freeflight.receivers.DroneReadyReceiverDelegate;
@@ -44,8 +43,7 @@ import com.parrot.freeflight.service.DroneControlService;
  * @author GeraldW
  * 
  */
-public class CatroidDummy extends Activity implements
-		DroneReadyReceiverDelegate, DroneFlyingStateReceiverDelegate,
+public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate, DroneFlyingStateReceiverDelegate,
 		DroneConnectionChangeReceiverDelegate {
 
 	private DroneControlService droneControlService;
@@ -65,7 +63,6 @@ public class CatroidDummy extends Activity implements
 	private Button btnTurnLeft;
 	private Button btnTurnRight;
 	private Button btnLEDAnimation;
-	private Button btnShowVideo;
 	private SeekBar powerBar;
 	private TextView tvSpeeed;
 
@@ -74,12 +71,14 @@ public class CatroidDummy extends Activity implements
 
 	private BroadcastReceiver droneReadyReceiver;
 	private BroadcastReceiver droneConnectionChangeReceiver;
-	private DroneFlyingStateReceiver droneFlyingStateReceiver;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.catroiddummy);
+
+		droneReadyReceiver = new DroneReadyReceiver(this);
+		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
 
 		topView = findViewById(R.id.textViewTop);
 
@@ -88,8 +87,7 @@ public class CatroidDummy extends Activity implements
 
 			int progressChanged = 0;
 
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				progressChanged = progress;
 				tvSpeeed.setText(Float.toString(progress));
 
@@ -100,8 +98,7 @@ public class CatroidDummy extends Activity implements
 
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				power = getConvertedValue(progressChanged);
-				Toast.makeText(seekBar.getContext(), "Value: " + power,
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(seekBar.getContext(), "Value: " + power, Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -110,7 +107,7 @@ public class CatroidDummy extends Activity implements
 			@Override
 			public void onClick(View v) {
 				if (onConnectPressed()) {
-					topView.setBackgroundColor(0xFF00FF00);
+					topView.setBackgroundColor(0xFF00FFFF);
 					topView.invalidate();
 				} else {
 					topView.setBackgroundColor(0xFFFF0000);
@@ -203,15 +200,13 @@ public class CatroidDummy extends Activity implements
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
 					droneControlService.setProgressiveCommandEnabled(true);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(true);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveLeftPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
 					droneControlService.setProgressiveCommandEnabled(false);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(false);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveLeftPressed(0);
 					return true;
 				}
@@ -227,15 +222,13 @@ public class CatroidDummy extends Activity implements
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
 					droneControlService.setProgressiveCommandEnabled(true);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(true);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveRightPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
 					droneControlService.setProgressiveCommandEnabled(false);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(false);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveRightPressed(0);
 					return true;
 				}
@@ -251,15 +244,13 @@ public class CatroidDummy extends Activity implements
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
 					droneControlService.setProgressiveCommandEnabled(true);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(true);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveBackwardPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
 					droneControlService.setProgressiveCommandEnabled(false);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(false);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveBackwardPressed(0);
 					return true;
 				}
@@ -275,15 +266,13 @@ public class CatroidDummy extends Activity implements
 				case MotionEvent.ACTION_DOWN:
 					// PRESSED
 					droneControlService.setProgressiveCommandEnabled(true);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(true);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(true);
 					onMoveForwardPressed(power);
 					return true;
 				case MotionEvent.ACTION_UP:
 					// RELEASED
 					droneControlService.setProgressiveCommandEnabled(false);
-					droneControlService
-							.setProgressiveCommandCombinedYawEnabled(false);
+					droneControlService.setProgressiveCommandCombinedYawEnabled(false);
 					onMoveForwardPressed(0);
 					return true;
 				}
@@ -331,28 +320,21 @@ public class CatroidDummy extends Activity implements
 		btnLEDAnimation.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				droneControlService
-						.playLedAnimation(
-								5.0f,
-								3,
-								ARDRONE_LED_ANIMATION.ARDRONE_LED_ANIMATION_BLINK_ORANGE
-										.ordinal());
+				droneControlService.playLedAnimation(5.0f, 3,
+						ARDRONE_LED_ANIMATION.ARDRONE_LED_ANIMATION_BLINK_ORANGE.ordinal());
 			}
 		});
 
 		tvSpeeed = (TextView) findViewById(id.tv_speed_value);
-
-		droneReadyReceiver = new DroneReadyReceiver(this);
-		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
-		droneFlyingStateReceiver = new DroneFlyingStateReceiver(this);
 
 		enableButtons(false);
 
 	}
 
 	public void showVideoActivity(View view) {
-		Intent intent = new Intent(this, VideoActivity.class);
-		startActivity(intent);
+		// Intent intent = new Intent(this, VideoActivity.class);
+		// startActivity(intent);
+		onOpenHudScreen();
 	}
 
 	public float getConvertedValue(int intVal) {
@@ -377,6 +359,13 @@ public class CatroidDummy extends Activity implements
 		btnLEDAnimation.setEnabled(value);
 	}
 
+	private void onOpenHudScreen() {
+		Intent droneControlActivity = new Intent(CatroidDummy.this, ControlDroneActivity.class);
+		droneControlActivity.putExtra("USE_SOFTWARE_RENDERING", false);
+		droneControlActivity.putExtra("FORCE_COMBINED_CONTROL_MODE", false);
+		startActivity(droneControlActivity);
+	}
+
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -388,13 +377,11 @@ public class CatroidDummy extends Activity implements
 	public void onResume() {
 		super.onResume();
 		Log.d("Drone", "onResume");
-		LocalBroadcastManager manager = LocalBroadcastManager
-				.getInstance(getApplicationContext());
-		manager.registerReceiver(droneReadyReceiver, new IntentFilter(
-				DroneControlService.DRONE_STATE_READY_ACTION));
-		manager.registerReceiver(droneConnectionChangeReceiver,
-				new IntentFilter(
-						DroneControlService.DRONE_CONNECTION_CHANGED_ACTION));
+
+		LocalBroadcastManager manager = LocalBroadcastManager.getInstance(getApplicationContext());
+		manager.registerReceiver(droneReadyReceiver, new IntentFilter(DroneControlService.DRONE_STATE_READY_ACTION));
+		manager.registerReceiver(droneConnectionChangeReceiver, new IntentFilter(
+				DroneControlService.DRONE_CONNECTION_CHANGED_ACTION));
 
 	}
 
@@ -421,8 +408,7 @@ public class CatroidDummy extends Activity implements
 
 	private boolean onConnectPressed() {
 		Log.d("Drone", "onConnectPressed");
-		return bindService(new Intent(this, DroneControlService.class),
-				mConnection, Context.BIND_AUTO_CREATE);
+		return bindService(new Intent(this, DroneControlService.class), mConnection, Context.BIND_AUTO_CREATE);
 	}
 
 	private void onDisconnectPressed() {
@@ -430,8 +416,7 @@ public class CatroidDummy extends Activity implements
 
 		unbindService(mConnection);
 
-		Toast.makeText(getApplicationContext(), "Disconnected to Drone",
-				Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Disconnected to Drone", Toast.LENGTH_SHORT).show();
 
 		enableButtons(false);
 	}
@@ -505,8 +490,7 @@ public class CatroidDummy extends Activity implements
 	private ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceConnected(ComponentName name, IBinder service) {
-			droneControlService = ((DroneControlService.LocalBinder) service)
-					.getService();
+			droneControlService = ((DroneControlService.LocalBinder) service).getService();
 			onDroneServiceConnected();
 
 			isDroneConnected = true;
@@ -526,12 +510,10 @@ public class CatroidDummy extends Activity implements
 			droneControlService.resume();
 			droneControlService.requestDroneStatus();
 		} else {
-			Log.w("Drone",
-					"DroneServiceConnected event ignored as DroneControlService is null");
+			Log.w("Drone", "DroneServiceConnected event ignored as DroneControlService is null");
 		}
 
-		Toast.makeText(getApplicationContext(), "connected to Drone",
-				Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "connected to Drone", Toast.LENGTH_SHORT).show();
 
 		// to calibrate the drone
 		// droneControlService.flatTrim();
