@@ -196,6 +196,14 @@
             android:text="show Video"
             android:onClick="showVideoActivity"
             android:textSize="20sp" />
+         <Button
+            android:id="@+id/btn_openGL"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="openGL"
+            android:onClick="openGL"
+            android:textSize="20sp" />
     </TableRow>
 
     <TableRow

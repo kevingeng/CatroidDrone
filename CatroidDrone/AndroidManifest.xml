@@ -64,7 +64,7 @@
             </intent-filter>
         </activity>
         <!-- created by gerald at 2013-07-24 15:54:16 -->
-        
+
         <activity
             android:name="com.parrot.freeflight.activities.base.CatroidDummy"
             android:label="@string/app_name_dummy"
@@ -138,8 +138,12 @@
             android:required="false" />
 
         <activity
-            android:name="com.parrot.freeflight.catroid.VideoActivity"
+            android:name=".VideoActivity"
             android:label="@string/title_activity_video" >
+        </activity>
+        <activity
+            android:name=".MyOpenGLActivity"
+            android:label="@string/title_activity_my_open_gl" >
         </activity>
     </application>
 

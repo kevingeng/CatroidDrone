@@ -2,15 +2,25 @@ package com.parrot.freeflight.catroid;
 
 import java.io.File;
 
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.parrot.freeflight.activities.SettingsDialog;
-import com.parrot.freeflight.activities.base.ParrotActivity;
+import com.parrot.freeflight.drone.NavData;
 import com.parrot.freeflight.receivers.DroneAvailabilityDelegate;
 import com.parrot.freeflight.receivers.DroneAvailabilityReceiver;
 import com.parrot.freeflight.receivers.DroneBatteryChangedReceiver;
@@ -37,13 +47,12 @@ import com.parrot.freeflight.receivers.WifiSignalStrengthChangedReceiver;
 import com.parrot.freeflight.receivers.WifiSignalStrengthReceiverDelegate;
 import com.parrot.freeflight.sensors.DeviceOrientationChangeDelegate;
 import com.parrot.freeflight.service.DroneControlService;
-import com.parrot.freeflight.service.intents.DroneStateManager;
 import com.parrot.freeflight.settings.ApplicationSettings.EAppSettingProperty;
-import com.parrot.freeflight.transcodeservice.TranscodingService;
-import com.parrot.freeflight.ui.HudViewController;
 import com.parrot.freeflight.ui.SettingsDialogDelegate;
+import com.parrot.freeflight.video.VideoStageRenderer;
+import com.parrot.freeflight.video.VideoStageView;
 
-public class VideoActivity extends ParrotActivity implements DeviceOrientationChangeDelegate,
+public class VideoActivity extends Activity implements DeviceOrientationChangeDelegate,
 		WifiSignalStrengthReceiverDelegate, DroneVideoRecordStateReceiverDelegate,
 		DroneEmergencyChangeReceiverDelegate, DroneBatteryChangedReceiverDelegate, DroneFlyingStateReceiverDelegate,
 		DroneCameraReadyActionReceiverDelegate, DroneRecordReadyActionReceiverDelegate, SettingsDialogDelegate,
@@ -63,19 +72,98 @@ public class VideoActivity extends ParrotActivity implements DeviceOrientationCh
 	private MediaReadyReceiver mediaReadyReceiver;
 	private DroneConnectionChangedReceiver droneConnectionChangeReceiver;
 
+	private GLSurfaceView mGLView;
+	private SparseIntArray emergencyStringMap;
+	private VideoStageView canvasView;
+	private GLSurfaceView glView;
+	private VideoStageRenderer renderer;
+
+	private DroneControlService droneControlService;
+	private boolean useSoftwareRendering;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_video);
-		initBroadcastReceivers();
-		registerBroadcastReceivers();
 
-		HudViewController view = new HudViewController(this, false);
-		view.setCameraButtonEnabled(false);
-		view.setRecordButtonEnabled(false);
+		if (isFinishing()) {
+			return;
+		}
+
+		setContentView(R.layout.activity_video);
+
+		initReceivers();
+		registerReceivers();
+
+		bindService(new Intent(this, DroneControlService.class), mConnection, Context.BIND_AUTO_CREATE);
+
+		Bundle bundle = getIntent().getExtras();
+
+		if (bundle != null) {
+			useSoftwareRendering = bundle.getBoolean("USE_SOFTWARE_RENDERING");
+		} else {
+			useSoftwareRendering = false;
+		}
+
+		// HudViewController view = new HudViewController(this,
+		// useSoftwareRendering);
+		showVideo();
+
 	}
 
-	protected void initBroadcastReceivers() {
+	private ServiceConnection mConnection = new ServiceConnection() {
+
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			droneControlService = ((DroneControlService.LocalBinder) service).getService();
+			onDroneServiceConnected();
+		}
+
+		public void onServiceDisconnected(ComponentName name) {
+			droneControlService = null;
+		}
+	};
+
+	/**
+	 * Called when we connected to DroneControlService
+	 */
+	protected void onDroneServiceConnected() {
+		if (droneControlService != null) {
+			droneControlService.resume();
+			droneControlService.requestDroneStatus();
+		} else {
+			Log.w("Drone", "DroneServiceConnected event ignored as DroneControlService is null");
+		}
+
+		Toast.makeText(getApplicationContext(), "connected to Drone", Toast.LENGTH_SHORT).show();
+	}
+
+	public void showVideo() {
+
+		glView = new GLSurfaceView(this);
+		glView.setEGLContextClientVersion(2);
+		setContentView(glView);
+
+		renderer = new VideoStageRenderer(this, null);
+
+		initNavdataStrings();
+		initCanvasSurfaceView();
+		initGLSurfaceView();
+	}
+
+	private void initCanvasSurfaceView() {
+		if (canvasView != null) {
+			canvasView.setRenderer(renderer);
+			// canvasView.setOnTouchListener(this);
+		}
+	}
+
+	private void initGLSurfaceView() {
+		if (glView != null) {
+			glView.setRenderer(renderer);
+			// glView.setOnTouchListener(this);
+		}
+	}
+
+	private void initReceivers() {
 		wifiSignalReceiver = new WifiSignalStrengthChangedReceiver(this);
 		videoRecordingStateReceiver = new DroneVideoRecordingStateReceiver(this);
 		droneEmergencyReceiver = new DroneEmergencyChangeReceiver(this);
@@ -83,29 +171,40 @@ public class VideoActivity extends ParrotActivity implements DeviceOrientationCh
 		droneFlyingStateReceiver = new DroneFlyingStateReceiver(this);
 		droneCameraReadyChangedReceiver = new DroneCameraReadyChangeReceiver(this);
 		droneRecordReadyChangeReceiver = new DroneRecordReadyChangeReceiver(this);
-		droneStateReceiver = new DroneAvailabilityReceiver(this);
-		networkChangeReceiver = new NetworkChangeReceiver(this);
-		droneFirmwareCheckReceiver = new DroneFirmwareCheckReceiver(this);
-		mediaReadyReceiver = new MediaReadyReceiver(this);
-		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
 	}
 
-	protected void registerBroadcastReceivers() {
-		LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(getApplicationContext());
-		broadcastManager.registerReceiver(droneStateReceiver, new IntentFilter(
-				DroneStateManager.ACTION_DRONE_STATE_CHANGED));
-		broadcastManager.registerReceiver(droneFirmwareCheckReceiver, new IntentFilter(
-				DroneControlService.DRONE_FIRMWARE_CHECK_ACTION));
+	private void registerReceivers() {
+		// System wide receiver
+		registerReceiver(wifiSignalReceiver, new IntentFilter(WifiManager.RSSI_CHANGED_ACTION));
 
-		IntentFilter mediaReadyFilter = new IntentFilter();
-		mediaReadyFilter.addAction(DroneControlService.NEW_MEDIA_IS_AVAILABLE_ACTION);
-		mediaReadyFilter.addAction(TranscodingService.NEW_MEDIA_IS_AVAILABLE_ACTION);
-		broadcastManager.registerReceiver(mediaReadyReceiver, mediaReadyFilter);
-		broadcastManager.registerReceiver(droneConnectionChangeReceiver, new IntentFilter(
-				DroneControlService.DRONE_CONNECTION_CHANGED_ACTION));
+		// Local receivers
+		LocalBroadcastManager localBroadcastMgr = LocalBroadcastManager.getInstance(getApplicationContext());
+		localBroadcastMgr.registerReceiver(videoRecordingStateReceiver, new IntentFilter(
+				DroneControlService.VIDEO_RECORDING_STATE_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneEmergencyReceiver, new IntentFilter(
+				DroneControlService.DRONE_EMERGENCY_STATE_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneBatteryReceiver, new IntentFilter(
+				DroneControlService.DRONE_BATTERY_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneFlyingStateReceiver, new IntentFilter(
+				DroneControlService.DRONE_FLYING_STATE_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneCameraReadyChangedReceiver, new IntentFilter(
+				DroneControlService.CAMERA_READY_CHANGED_ACTION));
+		localBroadcastMgr.registerReceiver(droneRecordReadyChangeReceiver, new IntentFilter(
+				DroneControlService.RECORD_READY_CHANGED_ACTION));
+	}
 
-		registerReceiver(networkChangeReceiver, new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION));
+	private void unregisterReceivers() {
+		// Unregistering system receiver
+		unregisterReceiver(wifiSignalReceiver);
 
+		// Unregistering local receivers
+		LocalBroadcastManager localBroadcastMgr = LocalBroadcastManager.getInstance(getApplicationContext());
+		localBroadcastMgr.unregisterReceiver(videoRecordingStateReceiver);
+		localBroadcastMgr.unregisterReceiver(droneEmergencyReceiver);
+		localBroadcastMgr.unregisterReceiver(droneBatteryReceiver);
+		localBroadcastMgr.unregisterReceiver(droneFlyingStateReceiver);
+		localBroadcastMgr.unregisterReceiver(droneCameraReadyChangedReceiver);
+		localBroadcastMgr.unregisterReceiver(droneRecordReadyChangeReceiver);
 	}
 
 	@Override
@@ -217,4 +316,32 @@ public class VideoActivity extends ParrotActivity implements DeviceOrientationCh
 
 	}
 
+	private void initNavdataStrings() {
+		emergencyStringMap = new SparseIntArray(17);
+
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_CUTOUT, R.string.CUT_OUT_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_MOTORS, R.string.MOTORS_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_CAMERA, R.string.CAMERA_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_PIC_WATCHDOG, R.string.PIC_WATCHDOG_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_PIC_VERSION, R.string.PIC_VERSION_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_ANGLE_OUT_OF_RANGE, R.string.TOO_MUCH_ANGLE_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_VBAT_LOW, R.string.BATTERY_LOW_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_USER_EL, R.string.USER_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_ULTRASOUND, R.string.ULTRASOUND_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_UNKNOWN, R.string.UNKNOWN_EMERGENCY);
+		emergencyStringMap.put(NavData.ERROR_STATE_NAVDATA_CONNECTION, R.string.CONTROL_LINK_NOT_AVAILABLE);
+		emergencyStringMap.put(NavData.ERROR_STATE_START_NOT_RECEIVED, R.string.START_NOT_RECEIVED);
+		emergencyStringMap.put(NavData.ERROR_STATE_ALERT_CAMERA, R.string.VIDEO_CONNECTION_ALERT);
+		emergencyStringMap.put(NavData.ERROR_STATE_ALERT_VBAT_LOW, R.string.BATTERY_LOW_ALERT);
+		emergencyStringMap.put(NavData.ERROR_STATE_ALERT_ULTRASOUND, R.string.ULTRASOUND_ALERT);
+		emergencyStringMap.put(NavData.ERROR_STATE_ALERT_VISION, R.string.VISION_ALERT);
+		emergencyStringMap.put(NavData.ERROR_STATE_EMERGENCY_UNKNOWN, R.string.UNKNOWN_EMERGENCY);
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		// TODO Auto-generated method stub
+		unregisterReceivers();
+	}
 }

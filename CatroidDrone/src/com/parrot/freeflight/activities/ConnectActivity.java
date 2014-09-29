@@ -62,7 +62,6 @@ public class ConnectActivity extends ParrotActivity implements ServiceConnection
 
 		droneReadyReceiver = new DroneReadyReceiver(this);
 		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
-
 		bindService(new Intent(this, DroneControlService.class), this, Context.BIND_AUTO_CREATE);
 
 	}

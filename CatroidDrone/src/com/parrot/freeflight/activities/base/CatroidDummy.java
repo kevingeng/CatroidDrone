@@ -3,9 +3,6 @@
  */
 package com.parrot.freeflight.activities.base;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -13,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
@@ -29,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parrot.freeflight.activities.ControlDroneActivity;
+import com.parrot.freeflight.catroid.DrawView;
 import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.catroid.R.id;
 import com.parrot.freeflight.drone.DroneProxy.ARDRONE_LED_ANIMATION;
@@ -76,10 +73,6 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.catroiddummy);
-
-		droneReadyReceiver = new DroneReadyReceiver(this);
-		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
-
 		topView = findViewById(R.id.textViewTop);
 
 		powerBar = (SeekBar) findViewById(R.id.seekBarPower);
@@ -337,6 +330,14 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 		onOpenHudScreen();
 	}
 
+	public void openGL(View view) {
+
+		DrawView drawView = new DrawView(this);
+		setContentView(drawView);
+		// Intent intent = new Intent(this, MyOpenGLActivity.class);
+		// startActivity(intent);
+	}
+
 	public float getConvertedValue(int intVal) {
 		float floatVal = 0.0f;
 		floatVal = .01f * intVal;
@@ -360,7 +361,7 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 	}
 
 	private void onOpenHudScreen() {
-		Intent droneControlActivity = new Intent(CatroidDummy.this, ControlDroneActivity.class);
+		Intent droneControlActivity = new Intent(this, ControlDroneActivity.class);
 		droneControlActivity.putExtra("USE_SOFTWARE_RENDERING", false);
 		droneControlActivity.putExtra("FORCE_COMBINED_CONTROL_MODE", false);
 		startActivity(droneControlActivity);
@@ -385,6 +386,12 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 
 	}
 
+	private void unregisterReceivers() {
+		LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(getApplicationContext());
+		broadcastManager.unregisterReceiver(droneReadyReceiver);
+		broadcastManager.unregisterReceiver(droneConnectionChangeReceiver);
+	}
+
 	@Override
 	public void onPause() {
 		super.onPause();
@@ -403,11 +410,13 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 	public void onDestroy() {
 		super.onDestroy();
 		// TODO Auto-generated method stub
-
+		unregisterReceivers();
 	}
 
 	private boolean onConnectPressed() {
 		Log.d("Drone", "onConnectPressed");
+		droneReadyReceiver = new DroneReadyReceiver(this);
+		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
 		return bindService(new Intent(this, DroneControlService.class), mConnection, Context.BIND_AUTO_CREATE);
 	}
 
@@ -514,38 +523,6 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 		}
 
 		Toast.makeText(getApplicationContext(), "connected to Drone", Toast.LENGTH_SHORT).show();
-
-		// to calibrate the drone
-		// droneControlService.flatTrim();
-
-		// settingsDialog = new SettingsDialog(this, this, droneControlService,
-		// magnetoAvailable);
-
-		// applySettings(settings);
-
-		// initListeners();
-		// runTranscoding();
-
-		// if (droneControlService.getMediaDir() != null) {
-		// view.setRecordButtonEnabled(true);
-		// view.setCameraButtonEnabled(true);
-		// }
-	}
-
-	class ClearRenderer implements GLSurfaceView.Renderer {
-		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-			// Do nothing special.]
-
-		}
-
-		public void onSurfaceChanged(GL10 gl, int w, int h) {
-			gl.glViewport(0, 0, w, h);
-		}
-
-		public void onDrawFrame(GL10 gl) {
-			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-
-		}
 	}
 
 	@Override

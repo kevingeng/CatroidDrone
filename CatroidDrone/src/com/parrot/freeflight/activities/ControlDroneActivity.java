@@ -187,11 +187,8 @@ public class ControlDroneActivity extends ParrotActivity implements DeviceOrient
 
 		if (bundle != null) {
 			useSoftwareRendering = bundle.getBoolean("USE_SOFTWARE_RENDERING");
-			// forceCombinedControlMode =
-			// bundle.getBoolean("FORCE_COMBINED_CONTROL_MODE");
 		} else {
 			useSoftwareRendering = false;
-			// forceCombinedControlMode = false;
 		}
 
 		pauseVideoWhenOnSettings = getResources().getBoolean(R.bool.settings_pause_video_when_opened);
