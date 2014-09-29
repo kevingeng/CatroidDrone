@@ -28,6 +28,7 @@ import com.parrot.freeflight.activities.ControlDroneActivity;
 import com.parrot.freeflight.catroid.DrawView;
 import com.parrot.freeflight.catroid.R;
 import com.parrot.freeflight.catroid.R.id;
+import com.parrot.freeflight.catroid.VideoActivity;
 import com.parrot.freeflight.drone.DroneProxy.ARDRONE_LED_ANIMATION;
 import com.parrot.freeflight.receivers.DroneConnectionChangeReceiverDelegate;
 import com.parrot.freeflight.receivers.DroneConnectionChangedReceiver;
@@ -73,6 +74,10 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.catroiddummy);
+
+		droneReadyReceiver = new DroneReadyReceiver(this);
+		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
+
 		topView = findViewById(R.id.textViewTop);
 
 		powerBar = (SeekBar) findViewById(R.id.seekBarPower);
@@ -325,9 +330,9 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 	}
 
 	public void showVideoActivity(View view) {
-		// Intent intent = new Intent(this, VideoActivity.class);
-		// startActivity(intent);
-		onOpenHudScreen();
+		Intent intent = new Intent(this, VideoActivity.class);
+		startActivity(intent);
+		// onOpenHudScreen();
 	}
 
 	public void openGL(View view) {
@@ -361,7 +366,7 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 	}
 
 	private void onOpenHudScreen() {
-		Intent droneControlActivity = new Intent(this, ControlDroneActivity.class);
+		Intent droneControlActivity = new Intent(CatroidDummy.this, ControlDroneActivity.class);
 		droneControlActivity.putExtra("USE_SOFTWARE_RENDERING", false);
 		droneControlActivity.putExtra("FORCE_COMBINED_CONTROL_MODE", false);
 		startActivity(droneControlActivity);
@@ -410,13 +415,11 @@ public class CatroidDummy extends Activity implements DroneReadyReceiverDelegate
 	public void onDestroy() {
 		super.onDestroy();
 		// TODO Auto-generated method stub
-		unregisterReceivers();
+
 	}
 
 	private boolean onConnectPressed() {
 		Log.d("Drone", "onConnectPressed");
-		droneReadyReceiver = new DroneReadyReceiver(this);
-		droneConnectionChangeReceiver = new DroneConnectionChangedReceiver(this);
 		return bindService(new Intent(this, DroneControlService.class), mConnection, Context.BIND_AUTO_CREATE);
 	}
 
